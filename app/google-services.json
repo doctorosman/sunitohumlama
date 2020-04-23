@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "120875612502",
+    "firebase_url": "https://begsanvet.firebaseio.com",
+    "project_id": "begsanvet",
+    "storage_bucket": "begsanvet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120875612502:android:8151978e1a158d6d643ef7",
+        "android_client_info": {
+          "package_name": "com.osmanyasirinan.begsanvet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "120875612502-fn66nq6hb27kgc05mf1dmlijdju712t1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCev7LcjwidvUiIYKCVsZQFIB4ITxndkxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "120875612502-fn66nq6hb27kgc05mf1dmlijdju712t1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
