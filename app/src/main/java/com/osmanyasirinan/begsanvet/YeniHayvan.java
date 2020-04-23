@@ -72,13 +72,10 @@ public class YeniHayvan extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        final FirebaseUser user = auth.getCurrentUser();
         kaydet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Hayvan h = new Hayvan(sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
-                hayvanYaz(h, user);
-
                 Database vt = new Database(YeniHayvan.this);
                 vt.veriEkle(sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
                 bitir();
