@@ -10,23 +10,8 @@
     android:orientation="vertical"
     tools:context=".Bilgi">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/begsannotext"
-        android:contentDescription="TODO" />
-
     <TextView
         android:id="@+id/topkayit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@android:color/black"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/gunkayit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -41,6 +26,14 @@
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
+    <TextView
+        android:id="@+id/gunkayit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="22sp" />
+
     <ImageButton
         android:id="@+id/tarihkayit"
         android:layout_width="75dp"
@@ -49,10 +42,18 @@
         android:background="@drawable/button"
         app:srcCompat="@drawable/ic_date_range_white_24dp" />
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/begsannotext" />
 
     <TextView
         android:layout_width="wrap_content"
