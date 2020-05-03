@@ -44,7 +44,11 @@ public class YeniHayvan extends AppCompatActivity {
         cb = findViewById(R.id.cb);
 
         Calendar calendar = Calendar.getInstance();
-        currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
+        int gun = calendar.get(Calendar.DAY_OF_MONTH);
+        int ay = calendar.get(Calendar.MONTH);
+        int yil = calendar.get(Calendar.YEAR);
+
+        currentDate = putZeros(gun) + "." + putZeros(ay) + "." + yil;
 
         cb.setOnClickListener(new View.OnClickListener() {
             @Override
