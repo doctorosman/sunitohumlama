@@ -3,10 +3,14 @@ package com.osmanyasirinan.begsanvet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +19,8 @@ import java.util.Calendar;
 
 public class Bilgi extends AppCompatActivity {
 
-    TextView topkayit, gunkayit, aykayit;
     String currentDate;
-    ImageButton tarihkayit;
+    Button aykayit, gunkayit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,31 +29,29 @@ public class Bilgi extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        topkayit = findViewById(R.id.topkayit);
-        gunkayit = findViewById(R.id.gunkayit);
-        aykayit = findViewById(R.id.aykayit);
-
-        tarihkayit = findViewById(R.id.tarihkayit);
-
         Calendar calendar = Calendar.getInstance();
         currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
 
-        Database db = new Database(Bilgi.this);
-        String mesaj = "";
-        for (int j = 1; j <= 12; j++){
-            int kayit = db.getAyKayit(j);
-            if (kayit > 0){
-                mesaj += getAy(j) + " Ayı: " + kayit + "\n";
+        aykayit = findViewById(R.id.aykayit);
+        gunkayit = findViewById(R.id.gunkayit);
+
+        aykayit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
+                pickerDialog.setListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int i2) {
+                        Database db = new Database(Bilgi.this);
+                        String str = getAy(month) + " ayında yapılan tohumlama sayısı: " + db.getAyKayit(month);
+                        Toast.makeText(Bilgi.this, str, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                pickerDialog.show(getSupportFragmentManager(), "MonthYearPickerDialog");
             }
-        }
-        aykayit.setText(mesaj);
-        String topkayitt = "Toplam kayıt: " + db.idListele().size() + "";
-        topkayit.setText(topkayitt);
+        });
 
-        String gunkayitt = "Bugün yapılan tohumlama: " + db.getTarihKayit(currentDate) + "\n";
-        gunkayit.setText(gunkayitt);
-
-        tarihkayit.setOnClickListener(new View.OnClickListener() {
+        gunkayit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Calendar takvim = Calendar.getInstance();
