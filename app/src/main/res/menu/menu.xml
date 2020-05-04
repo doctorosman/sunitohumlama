@@ -6,10 +6,4 @@
         android:icon="@drawable/ic_add_black_24dp"
         app:showAsAction="ifRoom"
         android:title="Ekle" />
-
-    <item android:id="@+id/itemmore"
-        android:icon="@drawable/ic_more_vert_black_24dp"
-        app:showAsAction="ifRoom"
-        android:title="More"/>
-
 </menu>

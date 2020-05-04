@@ -7,23 +7,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Bilgi"
-            android:parentActivityName=".MainActivity"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".main.MainActivity"/>
         <activity
-            android:name=".HayvanDuzenle"
-            android:parentActivityName=".HayvanDetay" />
+            android:name=".database.HayvanDuzenle"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".database.HayvanDetay" />
         <activity
-            android:name=".HayvanDetay"
-            android:parentActivityName=".MainActivity" />
+            android:name=".database.HayvanDetay"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".main.MainActivity" />
         <activity
-            android:name=".YeniHayvan"
+            android:name=".database.YeniHayvan"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".main.MainActivity" />
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

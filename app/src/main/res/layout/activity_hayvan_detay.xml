@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".HayvanDetay">
+    tools:context=".database.HayvanDetay">
 
     <TableLayout
         android:layout_width="match_parent"

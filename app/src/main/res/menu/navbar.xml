@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Ana Sayfa"/>
+
+    <item
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/ic_show_chart_black_24dp"
+        android:title="Veriler"/>
+
+    <!-- SOON
+    <item
+        android:id="@+id/filter"
+        android:icon="@drawable/ic_menu_black_24dp"
+        android:title="Filtre"/> -->
+
+</menu>
