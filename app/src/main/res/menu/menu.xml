@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/itemadd"
-        android:icon="@drawable/ic_add_black_24dp"
-        app:showAsAction="ifRoom"
-        android:title="Ekle" />
+    <item
+        android:id="@+id/itemfiltered"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="Filtrele"
+        app:showAsAction="ifRoom" />
 </menu>

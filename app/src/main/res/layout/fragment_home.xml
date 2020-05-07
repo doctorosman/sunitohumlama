@@ -13,15 +13,17 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/srch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ciddiblack" />
+
+        <EditText
+            android:id="@+id/srch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

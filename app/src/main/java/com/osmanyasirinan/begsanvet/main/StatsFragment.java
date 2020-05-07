@@ -1,11 +1,13 @@
 package com.osmanyasirinan.begsanvet.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,6 +36,7 @@ public class StatsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_stats, container, false);
         ListView today = v.findViewById(R.id.today);
+        ListView total = v.findViewById(R.id.total);
 
         Calendar calendar = Calendar.getInstance();
         int gun = calendar.get(Calendar.DAY_OF_MONTH);
@@ -45,8 +48,14 @@ public class StatsFragment extends Fragment {
         String iToday = db.getTarihKayit(currentDate) + "";
 
         String[] tod = {iToday};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.today, R.id.todaykayit, tod);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.today, R.id.todaykayit, tod);
         today.setAdapter(adapter);
+
+        String iTotal = db.getTotalCount() + "";
+        String[] tot = {iTotal};
+        ArrayAdapter<String> xadapter = new ArrayAdapter<>(context, R.layout.total, R.id.totalkayit, tot);
+        total.setAdapter(xadapter);
+
         Refresh();
         return v;
     }
@@ -64,7 +73,7 @@ public class StatsFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             Database db = new Database(context);
-            ArrayList<Kayit> klist = new ArrayList<>();
+            final ArrayList<Kayit> klist = new ArrayList<>();
             for (int i = 1; i <= c.get(Calendar.MONTH) + 1; i++){
                 int number = db.getAyKayit(i);
 
@@ -73,6 +82,15 @@ public class StatsFragment extends Fragment {
                     klist.add(r);
                 }
             }
+
+            stats.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(context, FilteredList.class);
+                    i.putExtra("ay", klist.get(position).getAy());
+                    startActivity(i);
+                }
+            });
 
             adapter = new KayitListAdapter(context, R.layout.month, klist);
             return null;

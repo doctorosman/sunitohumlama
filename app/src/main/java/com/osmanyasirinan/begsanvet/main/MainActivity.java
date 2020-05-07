@@ -30,23 +30,23 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
+            Fragment selectedFragment;
 
             switch (item.getItemId()){
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment(MainActivity.this);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
                     break;
                 case R.id.nav_stats:
                     selectedFragment = new StatsFragment(MainActivity.this);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
                     break;
 
-                /* SOON
-                case R.id.filter:
-                    selectedFragment = new FilterFragment(MainActivity.this);
-                    break; */
+                case R.id.nav_add:
+                    Intent i = new Intent(MainActivity.this, YeniHayvan.class);
+                    startActivity(i);
+                    break;
             }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
             return true;
         }
     };
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itemadd) {
-            Intent i = new Intent(MainActivity.this, YeniHayvan.class);
+        if (item.getItemId() == R.id.itemfiltered) {
+            Intent i = new Intent(MainActivity.this, FilteredList.class);
             startActivity(i);
             return true;
         }

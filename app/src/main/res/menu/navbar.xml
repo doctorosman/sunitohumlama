@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Ana Sayfa"/>
+
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="Yeni"/>
 
     <item
         android:id="@+id/nav_stats"

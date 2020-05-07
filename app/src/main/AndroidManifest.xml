@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bilgi"
+        <activity android:name=".main.FilteredList"
             android:screenOrientation="portrait"
             android:parentActivityName=".main.MainActivity"/>
         <activity
             android:name=".database.HayvanDuzenle"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".database.HayvanDetay" />
+            android:parentActivityName=".database.HayvanDetay"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".database.HayvanDetay"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".main.MainActivity" />
+            android:parentActivityName=".main.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".database.YeniHayvan"
             android:screenOrientation="portrait"

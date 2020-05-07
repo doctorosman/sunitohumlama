@@ -128,7 +128,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public List<String> filterbyTarih(String date){
-
         List<String> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -137,6 +136,22 @@ public class Database extends SQLiteOpenHelper {
             if (cursor.moveToFirst()){
                 do {
                     veriler.add(cursor.getString(1));
+                }while (cursor.moveToNext());
+            }
+        }catch (Exception e){}
+        db.close();
+        return veriler;
+    }
+
+    public List<Integer> filterIdsbyTarih(String date){
+        List<Integer> veriler = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_TARIH + " LIKE '%" + date + "%' ORDER BY id DESC", null, null);
+            if (cursor.moveToFirst()){
+                do {
+                    veriler.add(cursor.getInt(0));
                 }while (cursor.moveToNext());
             }
         }catch (Exception e){}
@@ -203,6 +218,14 @@ public class Database extends SQLiteOpenHelper {
             db.close();
         }
         return sayi;
+    }
+
+    public int getTotalCount(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
     }
 
     public int getTarihKayit(String tarih){
