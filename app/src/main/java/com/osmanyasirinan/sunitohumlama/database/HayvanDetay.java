@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.database;
+package com.osmanyasirinan.sunitohumlama.database;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.osmanyasirinan.begsanvet.R;
+import com.osmanyasirinan.sunitohumlama.R;
 
 public class HayvanDetay extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.main;
+package com.osmanyasirinan.sunitohumlama.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.osmanyasirinan.begsanvet.database.Database;
-import com.osmanyasirinan.begsanvet.database.HayvanDetay;
-import com.osmanyasirinan.begsanvet.R;
+import com.osmanyasirinan.sunitohumlama.database.Database;
+import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
+import com.osmanyasirinan.sunitohumlama.R;
 
 import java.util.List;
 

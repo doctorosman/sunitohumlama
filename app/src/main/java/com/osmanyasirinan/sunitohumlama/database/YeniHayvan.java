@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.database;
+package com.osmanyasirinan.sunitohumlama.database;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +11,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.osmanyasirinan.begsanvet.R;
-import com.osmanyasirinan.begsanvet.main.MainActivity;
+import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 import java.util.Calendar;
 

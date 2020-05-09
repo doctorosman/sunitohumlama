@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.main;
+package com.osmanyasirinan.sunitohumlama.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.osmanyasirinan.begsanvet.R;
-import com.osmanyasirinan.begsanvet.database.YeniHayvan;
+import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.database.YeniHayvan;
 
 public class MainActivity extends AppCompatActivity {
 

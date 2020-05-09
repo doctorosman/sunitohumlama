@@ -1,31 +1,24 @@
-package com.osmanyasirinan.begsanvet.main;
+package com.osmanyasirinan.sunitohumlama.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.osmanyasirinan.begsanvet.R;
-import com.osmanyasirinan.begsanvet.database.Database;
-import com.osmanyasirinan.begsanvet.database.HayvanDetay;
-import com.osmanyasirinan.begsanvet.database.YeniHayvan;
+import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.database.Database;
+import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
+import com.osmanyasirinan.sunitohumlama.database.YeniHayvan;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

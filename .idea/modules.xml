@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BegsanApp.iml" filepath="$PROJECT_DIR$/BegsanApp.iml" group="BegsanApp" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BegsanApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/Oyi Suni Tohumlama.iml" filepath="$PROJECT_DIR$/Oyi Suni Tohumlama.iml" group="Oyi Suni Tohumlama" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Oyi Suni Tohumlama/app" />
     </modules>
   </component>
 </project>

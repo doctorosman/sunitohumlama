@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet;
+package com.osmanyasirinan.sunitohumlama;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

@@ -1,11 +1,11 @@
-package com.osmanyasirinan.begsanvet;
+package com.osmanyasirinan.sunitohumlama;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.osmanyasirinan.begsanvet.main.MainActivity;
+import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

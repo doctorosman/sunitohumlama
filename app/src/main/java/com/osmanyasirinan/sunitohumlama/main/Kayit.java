@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.main;
+package com.osmanyasirinan.sunitohumlama.main;
 
 public class Kayit {
     private String ay;

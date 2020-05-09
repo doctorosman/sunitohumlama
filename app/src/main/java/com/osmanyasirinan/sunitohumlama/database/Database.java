@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet.database;
+package com.osmanyasirinan.sunitohumlama.database;
 
 import android.content.ContentValues;
 import android.content.Context;

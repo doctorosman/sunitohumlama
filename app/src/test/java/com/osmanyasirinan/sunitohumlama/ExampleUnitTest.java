@@ -1,4 +1,4 @@
-package com.osmanyasirinan.begsanvet;
+package com.osmanyasirinan.sunitohumlama;
 
 import org.junit.Test;
 

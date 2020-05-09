@@ -1,7 +1,6 @@
-package com.osmanyasirinan.begsanvet.main;
+package com.osmanyasirinan.sunitohumlama.main;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.osmanyasirinan.begsanvet.R;
+import com.osmanyasirinan.sunitohumlama.R;
 
 import java.util.ArrayList;
 
