@@ -13,7 +13,7 @@ Veteriner hekimler için; yapılan tohumlamaları (hayvan sahibi, atılan tohum,
 - Listedeki herhangi bir kaydın üstüne tıkladığınızda, o kayıtla ilgili detaylı bilgiye ulaşacaksınız.
 - Detaylı bilgilerini görüntülediğiniz kaydın sağ üstünde yer alan kalem butonuyla o kaydı düzenleyebilir, yanındaki çöp kovası butonuyla ise o kaydı silebilirsiniz.
 - Uygulamanın sağ üstünden yer alan filtrele butonu ile kayıtlarınızı filtreleyebileceğiniz bölüme gidebilirsiniz.
-- Filtrele bölümünde başlangıç ve bitiş tarihlerini seçerek iki tarih arasındaki kayıtlara ulaşabilirsiniz.
+- Filtrele bölümünde kayıtları seçtiğiniz parametrelere göre filtreleyebilirsiniz.
 
 ## Kayıtlar
 Kayıtlarda girebileceğiniz, veritabanına işlenen bilgiler şu şekildedir:
