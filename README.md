@@ -13,19 +13,14 @@ Veteriner hekimler için; yapılan tohumlamaları (hayvan sahibi, atılan tohum,
 - Listedeki herhangi bir kaydın üstüne tıkladığınızda o kayıtla ilgili detaylı bilgiye ulaşacaksınız.
 - Detaylı bilgilerini görüntülediğiniz kaydın sağ üstünde yer alan kalem butonuyla o kaydı düzenleyebilir, yanındaki çöp kovası butonuyla ise o kaydı silebilirsiniz.
 - Uygulamanın sağ üstünden yer alan filtrele butonu ile kayıtlarınızı filtreleyebileceğiniz bölüme gidebilirsiniz.
-<<<<<<< Updated upstream
 - Filtrele bölümünde kayıtları seçtiğiniz parametrelere göre filtreleyebilirsiniz.
-=======
-<<<<<<< HEAD
 - Filtrele bölümünde yalnızca seçtiğiniz parametrelere göre kayıtlarınızı filtreleyebilirsiniz. Seçmediğiniz parametreler filtrelemede dikkate alınmayacaktır.
 - Sağ alttaki ayarlar kısmından önceki kayıtlarınızı bu sürüme aktarabilir veya bu sürümdeki kayıtlarınızı dışa aktarabilirsiniz.
 
+> İçe veya dışa aktarma özelliğini kullanabilmeniz için uygulamaya kayıt yeri veya depolama izni vermeniz gerekmektedir.
+
 ## İçe Aktarma
 Kayıtlarınızın bulunduğu dosyanın ismini 'import.tohumlama' olarak değiştirerek telefonunuzun dahili depolamasında bulunan Documents (Belgeler) klasörünün içerisine atın. Daha sonra uygulamadaki ayarlar bölümünden içe aktarma işlemini tamamlayın.
-=======
-- Filtrele bölümünde kayıtları seçtiğiniz parametrelere göre filtreleyebilirsiniz.
->>>>>>> 832c1941ba9abee7366d26b69f9571cd91adf015
->>>>>>> Stashed changes
 
 ## Kayıtlar
 Kayıtlarda girebileceğiniz, veritabanına işlenen bilgiler şu şekildedir:
