@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.osmanyasirinan.sunitohumlama.R;
@@ -18,6 +19,7 @@ import java.util.Calendar;
 
 public class YeniHayvan extends AppCompatActivity {
 
+    ImageView sahipimg, koyimg, tohumimg, esgalimg;
     EditText sahipet, koyet, tohumet, esgalet;
     Button kaydet, cb;
     String currentDate;
@@ -32,6 +34,11 @@ public class YeniHayvan extends AppCompatActivity {
         tohumet = findViewById(R.id.tohumet);
         esgalet = findViewById(R.id.esgalet);
 
+        sahipimg = findViewById(R.id.sahip_imgview2);
+        koyimg = findViewById(R.id.koy_imgview2);
+        esgalimg = findViewById(R.id.esgal_imgview2);
+        tohumimg = findViewById(R.id.tohum_imgview2);
+
         kaydet = findViewById(R.id.kaydet);
         cb = findViewById(R.id.cb);
 
@@ -40,7 +47,7 @@ public class YeniHayvan extends AppCompatActivity {
         int ay = calendar.get(Calendar.MONTH) + 1;
         int yil = calendar.get(Calendar.YEAR);
 
-        currentDate = putZeros(gun) + "." + putZeros(ay) + "." + yil;
+        currentDate = new Utils().putZeros(gun) + "." + new Utils().putZeros(ay) + "." + yil;
 
         cb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +61,18 @@ public class YeniHayvan extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month += 1;
-                        YeniHayvan y = new YeniHayvan();
-                        currentDate = y.putZeros(dayOfMonth) + "." + y.putZeros(month) + "." + year;
+                        currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
                     }
                 }, yil, ay, gun);
 
                 dpd.show();
             }
         });
+
+        sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
+        koyet.addTextChangedListener(new Utils().watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+        esgalet.addTextChangedListener(new Utils().watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        tohumet.addTextChangedListener(new Utils().watcher(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
     }
 
     @Override
@@ -84,14 +95,6 @@ public class YeniHayvan extends AppCompatActivity {
         Intent i = new Intent(YeniHayvan.this, MainActivity.class);
         startActivity(i);
         finish();
-    }
-
-    public String putZeros(int a){
-        if (String.valueOf(a).length() == 1){
-            return "0" + a;
-        }else {
-            return a + "";
-        }
     }
 
 }

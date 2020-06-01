@@ -29,9 +29,6 @@ public class HayvanDetay extends AppCompatActivity {
         koytv = findViewById(R.id.koytv);
         tarihtv = findViewById(R.id.tarihtv);
 
-        getSupportActionBar().setTitle("Hayvan Bilgisi");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         id = getIntent().getIntExtra("id", 0);
     }
 

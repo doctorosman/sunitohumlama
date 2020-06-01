@@ -35,9 +35,10 @@ public class KayitListAdapter extends ArrayAdapter<Kayit> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         String ay = getItem(position).getAy();
+        int ayNumber = getItem(position).getAyNumber();
         String sayi = getItem(position).getSayi();
 
-        Kayit kayit = new Kayit(ay, sayi);
+        Kayit kayit = new Kayit(ay, ayNumber, sayi);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 

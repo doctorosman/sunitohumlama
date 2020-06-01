@@ -25,6 +25,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/sahip_imgview1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/ic_account_circle_black_24dp" />
@@ -46,6 +47,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/esgal_imgview1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/ic_info_black_24dp" />
@@ -70,6 +72,7 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/tohum_imgview1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
@@ -91,6 +94,7 @@
             android:gravity="center_horizontal">
 
             <ImageView
+                android:id="@+id/koy_imgview1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/ic_location_on_black_24dp" />

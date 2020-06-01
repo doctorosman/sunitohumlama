@@ -2,31 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.osmanyasirinan.sunitohumlama">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.osmanyasirinan.sunitohumlama.main.FilteredList"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.osmanyasirinan.sunitohumlama.main.MainActivity"/>
+        android:theme="@style/NoActionBarTheme">
+        <activity android:name=".database.FilterActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity
-            android:name="com.osmanyasirinan.sunitohumlama.database.HayvanDuzenle"
-            android:parentActivityName="com.osmanyasirinan.sunitohumlama.database.HayvanDetay"
+            android:name=".database.HayvanDuzenle"
+            android:parentActivityName=".database.HayvanDetay"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.osmanyasirinan.sunitohumlama.database.HayvanDetay"
-            android:parentActivityName="com.osmanyasirinan.sunitohumlama.main.MainActivity"
+            android:name=".database.HayvanDetay"
+            android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.osmanyasirinan.sunitohumlama.database.YeniHayvan"
+            android:name=".database.YeniHayvan"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
-        <activity android:name="com.osmanyasirinan.sunitohumlama.main.MainActivity" />
+        <activity android:name=".main.MainActivity"/>
         <activity
-            android:name="com.osmanyasirinan.sunitohumlama.SplashScreen"
+            android:name=".SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>

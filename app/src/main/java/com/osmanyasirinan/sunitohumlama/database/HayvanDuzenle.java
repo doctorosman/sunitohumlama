@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.osmanyasirinan.sunitohumlama.R;
 
@@ -20,6 +23,7 @@ public class HayvanDuzenle extends AppCompatActivity {
     String currentDate;
     int id;
     Hayvan h;
+    ImageView sahipimg, koyimg, tohumimg, esgalimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,11 @@ public class HayvanDuzenle extends AppCompatActivity {
         koyet = findViewById(R.id.koydet);
         tohumet = findViewById(R.id.tohumdet);
         esgalet = findViewById(R.id.esgaldet);
+
+        sahipimg = findViewById(R.id.sahip_imgview1);
+        esgalimg = findViewById(R.id.esgal_imgview1);
+        tohumimg = findViewById(R.id.tohum_imgview1);
+        koyimg = findViewById(R.id.koy_imgview1);
 
         kaydet = findViewById(R.id.kayddet);
         cb = findViewById(R.id.cdb);
@@ -55,8 +64,7 @@ public class HayvanDuzenle extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month += 1;
-                        YeniHayvan y = new YeniHayvan();
-                        currentDate = y.putZeros(dayOfMonth) + "." + y.putZeros(month) + "." + year;
+                        currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
                     }
                 }, yil, ay, gun);
 
@@ -74,6 +82,11 @@ public class HayvanDuzenle extends AppCompatActivity {
                 finish();
             }
         });
+
+        sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
+        koyet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+        esgalet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        tohumet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
     }
 
     private void setItems(){
@@ -82,4 +95,6 @@ public class HayvanDuzenle extends AppCompatActivity {
         esgalet.setText(h.getEsgal());
         tohumet.setText(h.getTohum());
     }
+
+
 }

@@ -9,4 +9,7 @@
     <string name="topkayit">Toplam Kayıt:</string>
     <string name="gunkayit">Bugünkü Kayıt:</string>
     <string name="copyright">v1.1\ncreated by oyi</string>
+    <string name="kayitbulunamadi">0 kayıt bulundu.</string>
+    <string name="imports">Önceki kayıtlarınızı içe aktarın.</string>
+    <string name="exports">Var olan kayıtlarınızı dışa aktarın.</string>
 </resources>

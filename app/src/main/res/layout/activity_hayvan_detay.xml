@@ -21,7 +21,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+                app:srcCompat="@drawable/account_colorful" />
 
             <TextView
                 android:id="@+id/sahiptv"
@@ -42,7 +42,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_info_black_24dp" />
+                app:srcCompat="@drawable/info_colorful" />
 
             <TextView
                 android:id="@+id/esgaltv"
@@ -63,7 +63,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
+                app:srcCompat="@drawable/bubble_colorful" />
 
             <TextView
                 android:id="@+id/tohumtv"
@@ -84,7 +84,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_location_on_black_24dp" />
+                app:srcCompat="@drawable/location_colorful" />
 
             <TextView
                 android:id="@+id/koytv"
@@ -105,7 +105,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/date40lik" />
+                app:srcCompat="@drawable/date_colorful" />
 
             <TextView
                 android:id="@+id/tarihtv"

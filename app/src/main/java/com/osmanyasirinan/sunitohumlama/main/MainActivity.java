@@ -1,71 +1,93 @@
 package com.osmanyasirinan.sunitohumlama.main;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.luseen.spacenavigation.SpaceItem;
+import com.luseen.spacenavigation.SpaceNavigationView;
+import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.database.FilterActivity;
 import com.osmanyasirinan.sunitohumlama.database.YeniHayvan;
 
 public class MainActivity extends AppCompatActivity {
+
+    SpaceNavigationView nav;
+    String[] strings;
+    int[] parts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomnav = findViewById(R.id.navview);
-        bottomnav.setOnNavigationItemSelectedListener(listener);
+        nav = findViewById(R.id.navview);
+        nav.initWithSaveInstanceState(savedInstanceState);
+        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_home_black_24dp));
+        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_show_chart_black_24dp));
+        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_sort_black_24dp));
+        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_settings_black_24dp));
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomeFragment(MainActivity.this)).commit();
+        strings = getIntent().getStringArrayExtra("strings");
+        parts = getIntent().getIntArrayExtra("parts");
+
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment;
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-            switch (item.getItemId()){
-                case R.id.nav_home:
-                    selectedFragment = new HomeFragment(MainActivity.this);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
-                    break;
-                case R.id.nav_stats:
-                    selectedFragment = new StatsFragment(MainActivity.this);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
-                    break;
-
-                case R.id.nav_add:
-                    Intent i = new Intent(MainActivity.this, YeniHayvan.class);
-                    startActivity(i);
-                    break;
+        if (strings != null && parts != null) {
+            Fragment f = new FilteredFragment(MainActivity.this, strings, parts);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, f).commit();
+        }else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomeFragment(MainActivity.this)).commit();
+        }
+        nav.setSpaceOnClickListener(new SpaceOnClickListener() {
+            @Override
+            public void onCentreButtonClick() {
+                nav.setCentreButtonSelectable(true);
+                Intent i = new Intent(MainActivity.this, YeniHayvan.class);
+                startActivity(i);
             }
-            return true;
-        }
-    };
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+            @Override
+            public void onItemClick(int itemIndex, String itemName) {
+                Fragment selectedFragment;
+                switch (itemIndex) {
+                    case 0:
+                        selectedFragment = new HomeFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itemfiltered) {
-            Intent i = new Intent(MainActivity.this, FilteredList.class);
-            startActivity(i);
-            return true;
-        }
+                    case 1:
+                        selectedFragment = new StatsFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
 
-        return super.onOptionsItemSelected(item);
+                    case 2:
+                        selectedFragment = new FilteredFragment(MainActivity.this, strings, parts);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
+
+                    case 3:
+                        selectedFragment = new SettingsFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
+                }
+            }
+
+            @Override
+            public void onItemReselected(int itemIndex, String itemName) {
+                if (itemIndex == 2){
+                    Intent i = new Intent(MainActivity.this, FilterActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
     }
 }

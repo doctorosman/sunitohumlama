@@ -5,7 +5,21 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -23,10 +37,12 @@ public class Database extends SQLiteOpenHelper {
     private static final String ROW_KOY = "koy";
     private static final String ROW_TARIH = "tarih";
     static Calendar c = Calendar.getInstance();
-    private static final int YIL = c.get(Calendar.YEAR);
+    public int YIL = c.get(Calendar.YEAR);
+    private Context context;
 
     public Database(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -203,10 +219,10 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public int getAyKayit(int a){
-        String ay = this.putZeros(a);
+        String ay = new Utils().putZeros(a);
         int sayi = 0;
         for (int i = 1; i <= 31; i++){
-            String t = this.putZeros(i) + "." + ay + "." + YIL;
+            String t = new Utils().putZeros(i) + "." + ay + "." + YIL;
             SQLiteDatabase db = this.getReadableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE tarih LIKE '%" + t + "%'", null);
             if (cursor.moveToFirst()){
@@ -242,11 +258,130 @@ public class Database extends SQLiteOpenHelper {
         return sayi;
     }
 
-    private String putZeros(int a){
-        if (String.valueOf(a).length() == 1){
-            return "0" + a;
-        }else {
-            return a + "";
+    public List<Hayvan> filtrele(String sahip, String esgal, String tohum, String koy, int ay, int yil) {
+        List<Hayvan> list = new ArrayList<>();
+        String sql = "SELECT id, sahip, esgal, tohum, koy, tarih FROM " + TABLO_HAYVANLAR;
+        boolean putAnd = false;
+
+        if (!sahip.equals("")){
+            sql += " WHERE " + ROW_SAHIP + " LIKE '%" + sahip + "%'";
+            putAnd = true;
+        }
+
+        if (!esgal.equals("")){
+            if (putAnd)
+                sql += " AND ";
+            else
+                sql += " WHERE ";
+            sql += ROW_ESGAL + " LIKE '%" + esgal + "%'";
+            putAnd = true;
+        }
+
+        if (!tohum.equals("")){
+            if (putAnd)
+                sql += " AND ";
+            else
+                sql += " WHERE ";
+            sql += ROW_TOHUM + " LIKE '%" + tohum + "%'";
+            putAnd = true;
+        }
+
+        if (!koy.equals("")){
+            if (putAnd)
+                sql += " AND ";
+            else
+                sql += " WHERE ";
+            sql += ROW_KOY + " LIKE '%" + koy + "%'";
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(sql, null);
+        if (c.moveToFirst()){
+            do {
+                list.add(new Hayvan(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5)));
+            }while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        if (ay != 0){
+            List<Hayvan> newList = new ArrayList<>();
+
+            for (Hayvan h : list) {
+                if (h.getAy() == ay && h.getYil() == yil) {
+                    newList.add(h);
+                }
+            }
+
+            return newList;
+        }else{
+            return list;
         }
     }
+
+    public void importrecords() {
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "import.tohumlama");
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] hayvan = line.split("\\|");
+                veriEkle(
+                        hayvan[0],
+                        hayvan[1],
+                        hayvan[2],
+                        hayvan[3],
+                        hayvan[4]
+                );
+                line = reader.readLine();
+            }
+            Toast.makeText(context, "İçe aktarma başarılı.", Toast.LENGTH_SHORT).show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public List<Hayvan> hayvanListele() {
+        List<Hayvan> veriler = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR, null);
+            if (cursor.moveToFirst()){
+                do {
+                    veriler.add(new Hayvan(
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4),
+                            cursor.getString(5)
+                    ));
+                }while (cursor.moveToNext());
+            }
+            cursor.close();
+        }catch (Exception e){
+
+        }
+        return veriler;
+    }
+
+    public void export(){
+        int n = 0;
+        String text = "";
+        for (Hayvan h : hayvanListele()) {
+            text += ((n != 0) ? "\n" : "") + h.getSahip() + "|" + h.getEsgal() + "|" + h.getTohum() + "|" + h.getKoy() + "|" + h.getTarih();
+            n++;
+        }
+
+        try {
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "output.tohumlama");
+            Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+            BufferedWriter fos = new BufferedWriter(writer);
+            fos.write(text);
+            Toast.makeText(context, "Dışa aktarma başarılı", Toast.LENGTH_SHORT);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

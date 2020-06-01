@@ -14,9 +14,11 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.osmanyasirinan.sunitohumlama.database.Database;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.database.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,7 +44,7 @@ public class StatsFragment extends Fragment {
         int ay = calendar.get(Calendar.MONTH) + 1;
         int yil = calendar.get(Calendar.YEAR);
 
-        String currentDate = putZeros(gun) + "." + putZeros(ay) + "." + yil;
+        String currentDate = new Utils().putZeros(gun) + "." + new Utils().putZeros(ay) + "." + yil;
         Database db = new Database(context);
         String iToday = db.getTarihKayit(currentDate) + "";
 
@@ -77,19 +79,10 @@ public class StatsFragment extends Fragment {
                 int number = db.getAyKayit(i);
 
                 if (number > 0){
-                    Kayit r = new Kayit(getAy(i), number + "");
+                    Kayit r = new Kayit(new Utils().getAy(i), i, number + "");
                     klist.add(r);
                 }
             }
-
-            stats.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(context, FilteredList.class);
-                    i.putExtra("ay", klist.get(position).getAy());
-                    startActivity(i);
-                }
-            });
 
             adapter = new KayitListAdapter(context, R.layout.month, klist);
             return null;
@@ -123,54 +116,5 @@ public class StatsFragment extends Fragment {
         }
     }
 
-    private String getAy(int b) {
-        switch (b){
-            case 1:
-                return "Ocak";
 
-            case 2:
-                return "Şubat";
-
-            case 3:
-                return "Mart";
-
-            case 4:
-                return "Nisan";
-
-            case 5:
-                return "Mayıs";
-
-            case 6:
-                return "Haziran";
-
-            case 7:
-                return "Temmuz";
-
-            case 8:
-                return "Ağustos";
-
-            case 9:
-                return "Eylül";
-
-            case 10:
-                return "Ekim";
-
-            case 11:
-                return "Kasım";
-
-            case 12:
-                return "Aralık";
-
-            default:
-                return null;
-        }
-    }
-
-    private String putZeros(int a){
-        if (String.valueOf(a).length() == 1){
-            return "0" + a;
-        }else {
-            return a + "";
-        }
-    }
 }

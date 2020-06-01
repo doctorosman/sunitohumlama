@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#0d47a1</color>
-    <color name="colorPrimaryDark">#002171</color>
+    <color name="colorPrimaryDark">#fafafa</color>
     <color name="colorAccent">#0d47a1</color>
     <color name="bilgiButtons">#FA71CD</color>
 </resources>

@@ -7,4 +7,11 @@
         android:icon="@drawable/ic_sort_black_24dp"
         android:title="Filtrele"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/itemimport"
+        android:icon="@drawable/ic_file_upload_black_24dp"
+        android:title="Import"
+        app:showAsAction="ifRoom" />
+
 </menu>

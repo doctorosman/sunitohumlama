@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:paddingBottom="20dp"
+    android:paddingEnd="20dp"
+    android:paddingStart="20dp">
+
+    <TextView
+        android:id="@+id/kayitsayisi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="@string/kayitbulunamadi"/>
+
+    <ListView
+        android:id="@+id/filteredlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10sp" />
+
+</LinearLayout>
