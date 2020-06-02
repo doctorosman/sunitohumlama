@@ -1,18 +1,17 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/doctorosman/begsan)](https://github.com/doctorosman)
-[![GitHub All Releases](https://img.shields.io/github/downloads/doctorosman/begsan/total)](https://github.com/doctorosman/begsan/releases/download/v1.3/app-release.apk)
+[![GitHub All Releases](https://img.shields.io/github/downloads/doctorosman/begsan/total)](https://github.com/doctorosman/begsan/releases/download/v2.0/app-release.apk)
 [![Follow](https://img.shields.io/badge/dctosman-follow-blueviolet?style=flat)](https://instagram.com/dctosman)
 # Oyi Suni Tohumlama Bilgi Uygulaması
 Veteriner hekimler için; yapılan tohumlamaları (hayvan sahibi, atılan tohum, hayvan cinsi vb. göre) kaydedebilen, daha sonra görüntüleyebilen, kayıtlar arası arama yapabilen bir android uygulaması.
 
 ## Kullanımı
-- Alt menüdeki yeni bölümünden yeni hayvan ekleyebilir, yanındaki veriler bölümünden ise günlük, aylık ve toplam kayıt sayısına ulaşabilirsiniz.
+- Alt menüdeki + bölümünden yeni hayvan ekleyebilir, yanındaki veriler bölümünden ise günlük, aylık ve toplam kayıt sayısına ulaşabilirsiniz.
 - Aynı zamanda veriler bölümünden seçeceğiniz aya göre kayıtlara ulaşabilirsiniz.
 - Hayvan ekleme aşamasında girebileceğiniz bilgiler aşağıda verilmiştir. Bu bölümde takvim butonuna basarak yapılan tohumlamanın tarihini seçebilirsiniz. Eğer tarih seçmezseniz otomatik olarak bulunduğunuz günün tarihi girilecektir.
 - Yine üstte bulunan arama bölümünden kayıtları hayvan sahiplerinin adlarına göre listeleyebilirsiniz.
 - Arama bölümünün altında ise daha önce yapmış olduğunuz kayıtları bulabilirsiniz.
 - Listedeki herhangi bir kaydın üstüne tıkladığınızda o kayıtla ilgili detaylı bilgiye ulaşacaksınız.
-- Detaylı bilgilerini görüntülediğiniz kaydın sağ üstünde yer alan kalem butonuyla o kaydı düzenleyebilir, yanındaki çöp kovası butonuyla ise o kaydı silebilirsiniz.
-- Uygulamanın sağ üstünden yer alan filtrele butonu ile kayıtlarınızı filtreleyebileceğiniz bölüme gidebilirsiniz.
+- Detaylı bilgilerini görüntülediğiniz kaydın sol altında yer alan kalem butonuyla o kaydı düzenleyebilir, yanındaki çöp kovası butonuyla ise o kaydı silebilirsiniz.
 - Filtrele bölümünde kayıtları seçtiğiniz parametrelere göre filtreleyebilirsiniz.
 - Filtrele bölümünde yalnızca seçtiğiniz parametrelere göre kayıtlarınızı filtreleyebilirsiniz. Seçmediğiniz parametreler filtrelemede dikkate alınmayacaktır.
 - Sağ alttaki ayarlar kısmından önceki kayıtlarınızı bu sürüme aktarabilir veya bu sürümdeki kayıtlarınızı dışa aktarabilirsiniz.
