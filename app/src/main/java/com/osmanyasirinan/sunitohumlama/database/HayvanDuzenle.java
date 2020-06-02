@@ -30,9 +30,6 @@ public class HayvanDuzenle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hayvan_duzenle);
 
-        getSupportActionBar().setTitle("Hayvan Düzenle");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         sahipet = findViewById(R.id.sahipdet);
         koyet = findViewById(R.id.koydet);
         tohumet = findViewById(R.id.tohumdet);
@@ -84,9 +81,9 @@ public class HayvanDuzenle extends AppCompatActivity {
         });
 
         sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
-        koyet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
-        esgalet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
-        tohumet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        koyet.addTextChangedListener(new Utils().watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+        esgalet.addTextChangedListener(new Utils().watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        tohumet.addTextChangedListener(new Utils().watcher(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
     }
 
     private void setItems(){

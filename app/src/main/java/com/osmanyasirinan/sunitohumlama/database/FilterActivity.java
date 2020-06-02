@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.osmanyasirinan.sunitohumlama.MonthYearPickerDialog;
 import com.osmanyasirinan.sunitohumlama.R;
@@ -67,11 +68,15 @@ public class FilterActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(FilterActivity.this, MainActivity.class);
-                i.putExtra("strings", new String[]{sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString()});
-                i.putExtra("parts", new int[]{selectedAy, selectedYil});
-                startActivity(i);
-                finish();
+                if (sahipet.getText().toString().equals("") && esgalet.getText().toString().equals("") && tohumet.getText().toString().equals("") && koyet.getText().toString().equals("") && selectedAy == 0){
+
+                }else {
+                    Intent i = new Intent(FilterActivity.this, MainActivity.class);
+                    i.putExtra("strings", new String[]{sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString()});
+                    i.putExtra("parts", new int[]{selectedAy, selectedYil});
+                    startActivity(i);
+                    finish();
+                }
             }
         });
     }

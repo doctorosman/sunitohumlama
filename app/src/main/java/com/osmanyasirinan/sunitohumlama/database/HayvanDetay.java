@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.osmanyasirinan.sunitohumlama.R;
 
 public class HayvanDetay extends AppCompatActivity {
 
+    ImageButton edit, delete;
     Hayvan h;
     int id;
     TextView sahiptv, esgaltv, tohumtv, koytv, tarihtv;
@@ -29,37 +33,33 @@ public class HayvanDetay extends AppCompatActivity {
         koytv = findViewById(R.id.koytv);
         tarihtv = findViewById(R.id.tarihtv);
 
+        edit = findViewById(R.id.editbutton);
+        delete = findViewById(R.id.deletebutton);
+
         id = getIntent().getIntExtra("id", 0);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.itemduzenle:
-                Intent i = new Intent(HayvanDetay.this, HayvanDuzenle.class);
-                i.putExtra("id", id);
-                startActivity(i);
-                return true;
-
-            case R.id.itemsil:
-                Database db = new Database(this);
-                db.veriSil(id);
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater i = getMenuInflater();
-        i.inflate(R.menu.detay, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HayvanDetay.this, HayvanDuzenle.class);
+                i.putExtra("id", id);
+                startActivity(i);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database db = new Database(HayvanDetay.this);
+                db.veriSil(id);
+                finish();
+            }
+        });
     }
 
     @Override
