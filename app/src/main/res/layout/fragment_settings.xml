@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#512DA8"
-        android:drawableLeft="@drawable/ic_file_upload_black_24dp"
+        android:drawableStart="@drawable/ic_file_upload_black_24dp"
         android:padding="16dp"
         android:text=" İÇE AKTAR"
         android:textColor="#FFFFFF"
@@ -42,12 +42,30 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="#512DA8"
-        android:drawableLeft="@drawable/ic_file_download_black_24dp"
+        android:drawableStart="@drawable/ic_file_download_black_24dp"
         android:padding="16dp"
         android:text=" DIŞA AKTAR"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/github"
+        android:textSize="16sp"/>
+    <Button
+        android:onClick="github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_github"
+        android:background="#ffffff"
+        android:padding="16dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:text="  GITHUB'DA GÖRÜNTÜLE"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
 
 </LinearLayout>

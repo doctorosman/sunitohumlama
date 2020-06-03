@@ -378,7 +378,7 @@ public class Database extends SQLiteOpenHelper {
             Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
             BufferedWriter fos = new BufferedWriter(writer);
             fos.write(text);
-            Toast.makeText(context, "Dışa aktarma başarılı", Toast.LENGTH_SHORT);
+            Toast.makeText(context, "Dışa aktarma başarılı", Toast.LENGTH_SHORT).show();
         }catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.hololo.tutorial.library.TutorialActivity;
 import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(1000);
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent i = new Intent(SplashScreen.this, MainActivity.class);
                     startActivity(i);
                     finish();
                 } catch (InterruptedException e) {
