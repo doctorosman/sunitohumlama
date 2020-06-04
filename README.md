@@ -1,5 +1,5 @@
-[![GitHub repo size](https://img.shields.io/github/repo-size/doctorosman/begsan)](https://github.com/doctorosman)
-[![GitHub All Releases](https://img.shields.io/github/downloads/doctorosman/begsan/total)](https://github.com/doctorosman/begsan/releases/download/v2.1/app-release.apk)
+[![GitHub repo size](https://img.shields.io/github/repo-size/doctorosman/sunitohumlama)](https://github.com/doctorosman)
+[![GitHub All Releases](https://img.shields.io/github/downloads/doctorosman/begsan/total)](https://github.com/doctorosman/sunitohumlama/releases/download/v2.1/app-release.apk)
 [![Follow](https://img.shields.io/badge/dctosman-follow-blueviolet?style=flat)](https://instagram.com/dctosman)
 # Oyi Suni Tohumlama Bilgi Uygulaması
 Veteriner hekimler için; yapılan tohumlamaları (hayvan sahibi, atılan tohum, hayvan cinsi vb. göre) kaydedebilen, daha sonra görüntüleyebilen, kayıtlar arası arama yapabilen bir android uygulaması.
