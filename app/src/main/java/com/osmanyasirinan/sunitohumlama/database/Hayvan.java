@@ -1,5 +1,7 @@
 package com.osmanyasirinan.sunitohumlama.database;
 
+import java.util.Calendar;
+
 public class Hayvan {
 
     private String sahip, esgal, tohum, koy, tarih;
@@ -59,40 +61,26 @@ public class Hayvan {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
-        this.tarih = tarih;
-    }
-
     public String getSahip() {
         return sahip;
-    }
-
-    public void setSahip(String sahip) {
-        this.sahip = sahip;
     }
 
     public String getEsgal() {
         return esgal;
     }
 
-    public void setEsgal(String esgal) {
-        this.esgal = esgal;
-    }
-
     public String getTohum() {
         return tohum;
-    }
-
-    public void setTohum(String tohum) {
-        this.tohum = tohum;
     }
 
     public String getKoy() {
         return koy;
     }
 
-    public void setKoy(String koy) {
-        this.koy = koy;
+    public String getTahminiDogum() {
+        Calendar c = Calendar.getInstance();
+        c.set(getYil(), getAy(), getGun());
+        c.add(Calendar.DAY_OF_MONTH, 280);
+        return new Utils().putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + new Utils().putZeros(c.get(Calendar.MONTH)) + "." + c.get(Calendar.YEAR);
     }
-
 }

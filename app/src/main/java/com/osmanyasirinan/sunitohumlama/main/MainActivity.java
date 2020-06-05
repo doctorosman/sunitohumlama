@@ -85,9 +85,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemReselected(int itemIndex, String itemName) {
-                if (itemIndex == 2){
-                    Intent i = new Intent(MainActivity.this, FilterActivity.class);
-                    startActivity(i);
+                Fragment selectedFragment;
+                switch (itemIndex){
+                    case 0:
+                        selectedFragment = new HomeFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
+
+                    case 1:
+                        selectedFragment = new StatsFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
+
+                    case 2:
+                        Intent i = new Intent(MainActivity.this, FilterActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case 3:
+                        selectedFragment = new SettingsFragment(MainActivity.this);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                        break;
                 }
             }
         });

@@ -13,6 +13,7 @@
     <string name="imports">Önceki kayıtlarınızı içe aktarın.</string>
     <string name="exports">Var olan kayıtlarınızı dışa aktarın.</string>
     <string name="github">İçe ve dışa aktarmayı nasıl yapacağınızı repomuzdan öğrenebilirsiniz.</string>
+    <string name="tahmini">Tahmini doğurma tarihi:</string>
 
     <string name="step1">Tüm kayıtlarınız burada listelenecek. Buradan arama yapabilirsiniz.</string>
     <string name="step2">Günlük, aylık ve toplam kayıt sayısına buradan ulaşabilirsiniz.</string>

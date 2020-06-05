@@ -2,6 +2,7 @@ package com.osmanyasirinan.sunitohumlama.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +23,7 @@ import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
 import com.osmanyasirinan.sunitohumlama.R;
 
 import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -30,9 +32,13 @@ public class HomeFragment extends Fragment {
     private ListView lv;
     private ArrayAdapter adapter;
     private Context context;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
 
     public HomeFragment(Context context){
         this.context = context;
+        prefs = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        editor = prefs.edit();
     }
 
     @Override
@@ -70,11 +76,13 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Database db = new Database(context);
                 int did;
-                if (et.getText().toString().equals("")){
+                if (et.getText().toString().equals(""))
                     did = db.idListele().get(position);
-                }else {
+                else
                     did = db.idListele(et.getText().toString()).get(position);
-                }
+
+                editor.putString("text", et.getText().toString());
+                editor.commit();
                 Intent i = new Intent(context, HayvanDetay.class);
                 i.putExtra("id", did);
                 startActivity(i);
@@ -85,8 +93,17 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+
+        if (!prefs.getString("text", "").equals(""))
+            et.setText(prefs.getString("text", ""));
+
         if (et.getText().toString().equals("")){
             Listele();
         }else {
