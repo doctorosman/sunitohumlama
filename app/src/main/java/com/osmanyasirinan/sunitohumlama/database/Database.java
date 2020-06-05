@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -375,9 +376,9 @@ public class Database extends SQLiteOpenHelper {
 
         try {
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "output.tohumlama");
-            Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
-            BufferedWriter fos = new BufferedWriter(writer);
-            fos.write(text);
+            FileWriter writer = new FileWriter(file);
+            writer.write(text);
+            writer.close();
             Toast.makeText(context, "Dışa aktarma başarılı", Toast.LENGTH_SHORT).show();
         }catch (IOException e) {
             e.printStackTrace();

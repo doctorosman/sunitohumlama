@@ -67,7 +67,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                editor.putString("text", s.toString());
+                editor.commit();
             }
         });
 
@@ -81,8 +82,6 @@ public class HomeFragment extends Fragment {
                 else
                     did = db.idListele(et.getText().toString()).get(position);
 
-                editor.putString("text", et.getText().toString());
-                editor.commit();
                 Intent i = new Intent(context, HayvanDetay.class);
                 i.putExtra("id", did);
                 startActivity(i);

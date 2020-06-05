@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,12 +9,27 @@
     android:paddingEnd="20dp"
     android:paddingStart="20dp">
 
-    <TextView
-        android:id="@+id/kayitsayisi"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="@string/kayitbulunamadi"/>
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/sortit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_sort_black_24dp" />
+
+        <TextView
+            android:id="@+id/kayitsayisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kayitbulunamadi"
+            android:textStyle="italic" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/filteredlistview"

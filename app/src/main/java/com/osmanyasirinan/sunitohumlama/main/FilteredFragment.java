@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.osmanyasirinan.sunitohumlama.R;
 import com.osmanyasirinan.sunitohumlama.database.Database;
+import com.osmanyasirinan.sunitohumlama.database.FilterActivity;
 import com.osmanyasirinan.sunitohumlama.database.Hayvan;
 import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
 
@@ -32,6 +34,7 @@ public class FilteredFragment extends Fragment {
     private Context context;
     private String[] strings;
     private int[] parts;
+    private ImageButton sort;
 
     public FilteredFragment(Context context) {
         this.context = context;
@@ -50,6 +53,16 @@ public class FilteredFragment extends Fragment {
 
         tv = v.findViewById(R.id.kayitsayisi);
         lv = v.findViewById(R.id.filteredlistview);
+
+        sort = v.findViewById(R.id.sortit);
+
+        sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, FilterActivity.class);
+                startActivity(i);
+            }
+        });
 
         return v;
     }
