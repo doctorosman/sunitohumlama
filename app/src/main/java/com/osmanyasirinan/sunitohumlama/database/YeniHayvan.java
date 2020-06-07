@@ -79,14 +79,16 @@ public class YeniHayvan extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        kaydet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Hayvan h = new Hayvan(sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
-                Database vt = new Database(YeniHayvan.this);
-                vt.veriEkle(sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
-                bitir();
-            }
+        kaydet.setOnClickListener(v -> {
+            String sahip = sahipet.getText().toString();
+            String koy = sahipet.getText().toString();
+            String esgal = sahipet.getText().toString();
+            String tohum = sahipet.getText().toString();
+
+            Hayvan h = new Hayvan(sahip, esgal, tohum, koy, currentDate);
+            Database vt = new Database(YeniHayvan.this);
+            vt.veriEkle(sahip, esgal, tohum, koy, currentDate);
+            bitir();
         });
     }
 

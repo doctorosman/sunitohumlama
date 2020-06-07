@@ -49,19 +49,5 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/yardimb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#0097A7"
-        android:drawableStart="@drawable/ic_help_outline_black_24dp"
-        android:onClick="github"
-        android:padding="16dp"
-        android:text="  YARDIM"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
 
 </LinearLayout>

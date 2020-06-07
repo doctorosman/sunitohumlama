@@ -1,7 +1,9 @@
 package com.osmanyasirinan.sunitohumlama.database;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -51,9 +53,20 @@ public class HayvanDetay extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Database db = new Database(HayvanDetay.this);
-                db.veriSil(id);
-                finish();
+                 new AlertDialog.Builder(HayvanDetay.this)
+                        .setTitle("Oyi Suni Tohumlama")
+                        .setMessage("Silmek istediğinize emin misiniz?")
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Database db = new Database(HayvanDetay.this);
+                                db.veriSil(id);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .setIcon(R.drawable.dialog_delete)
+                        .show();
             }
         });
     }

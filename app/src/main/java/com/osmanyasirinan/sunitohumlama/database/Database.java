@@ -219,6 +219,11 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteAllRecords(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLO_HAYVANLAR);
+    }
+
     public int getAyKayit(int a){
         String ay = new Utils().putZeros(a);
         int sayi = 0;
@@ -378,7 +383,7 @@ public class Database extends SQLiteOpenHelper {
             FileWriter writer = new FileWriter(file);
             writer.write(text);
             writer.close();
-            Toast.makeText(context, "Dışa aktarma başarılı", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Kayıtlarınız downloads (indirilenler) klasörünüze aktarıldı.", Toast.LENGTH_SHORT).show();
         }catch (IOException e) {
             e.printStackTrace();
         }

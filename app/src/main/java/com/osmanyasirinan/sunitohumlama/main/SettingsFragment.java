@@ -31,10 +31,10 @@ import static android.app.Activity.RESULT_OK;
 
 public class SettingsFragment extends Fragment {
 
+    private static final int FILE_PICKER_REQUEST_CODE = 1;
     private View v;
     private Button importb, exportb;
     private Context context;
-    private Button yardim;
 
     public SettingsFragment(Context context){ this.context = context; }
 
@@ -47,44 +47,18 @@ public class SettingsFragment extends Fragment {
 
         importb = v.findViewById(R.id.importbutton);
 
-        importb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                new MaterialFilePicker()
-                        .withSupportFragment(SettingsFragment.this)
-                        .withCloseMenu(true)
-                        .withFilter(Pattern.compile(".*\\.(txt|tohumlama)$"))
-                        .withFilterDirectories(false)
-                        .withTitle("İçe aktar")
-                        .start();
-            }
-        });
+        importb.setOnClickListener(v -> new MaterialFilePicker()
+                .withSupportFragment(SettingsFragment.this)
+                .withCloseMenu(true)
+                .withFilter(Pattern.compile(".*\\.(txt|tohumlama)$"))
+                .withFilterDirectories(false)
+                .withTitle("İçe aktar")
+                .withRequestCode(FILE_PICKER_REQUEST_CODE)
+                .start());
 
         exportb = v.findViewById(R.id.exportbutton);
 
-        exportb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db.exportr();
-            }
-        });
-
-        yardim = v.findViewById(R.id.yardimb);
-        yardim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog dialog = new AlertDialog.Builder(context).create();
-                dialog.setTitle("YARDIM");
-                dialog.setMessage("İçe aktarma yapmak için dahili depolamanızın Documents (Belgeler) klasörüne, kayıtlarınızın bulunduğu dosyayı import.tohumlama ismiyle kaydedin.");
-                dialog.setButton(AlertDialog.BUTTON_NEUTRAL, "TAMAM", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-            }
-        });
+        exportb.setOnClickListener(v -> db.exportr());
 
         return v;
     }
