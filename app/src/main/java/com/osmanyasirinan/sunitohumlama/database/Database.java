@@ -320,29 +320,6 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    public void importrecords() {
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "import.tohumlama");
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] hayvan = line.split("\\|");
-                veriEkle(
-                        hayvan[0],
-                        hayvan[1],
-                        hayvan[2],
-                        hayvan[3],
-                        hayvan[4]
-                );
-                line = reader.readLine();
-            }
-            Toast.makeText(context, "İçe aktarma başarılı.", Toast.LENGTH_SHORT).show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
     public List<Hayvan> hayvanListele() {
         List<Hayvan> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -366,7 +343,29 @@ public class Database extends SQLiteOpenHelper {
         return veriler;
     }
 
-    public void export(){
+    public void importr(File f) {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader(f));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] hayvan = line.split("\\|");
+                veriEkle(
+                        hayvan[0],
+                        hayvan[1],
+                        hayvan[2],
+                        hayvan[3],
+                        hayvan[4]
+                );
+                line = reader.readLine();
+            }
+            Toast.makeText(context, "İçe aktarma başarılı.", Toast.LENGTH_SHORT).show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void exportr(){
         int n = 0;
         String text = "";
         for (Hayvan h : hayvanListele()) {

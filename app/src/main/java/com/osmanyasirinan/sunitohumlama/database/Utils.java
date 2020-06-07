@@ -1,7 +1,12 @@
 package com.osmanyasirinan.sunitohumlama.database;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.ImageView;
 
 public class Utils {

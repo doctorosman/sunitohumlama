@@ -1,20 +1,33 @@
 package com.osmanyasirinan.sunitohumlama.main;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.nbsp.materialfilepicker.MaterialFilePicker;
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.osmanyasirinan.sunitohumlama.R;
 import com.osmanyasirinan.sunitohumlama.database.Database;
+import com.osmanyasirinan.sunitohumlama.database.Utils;
+
+import java.io.File;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import static android.app.Activity.RESULT_OK;
 
 public class SettingsFragment extends Fragment {
 
@@ -36,8 +49,14 @@ public class SettingsFragment extends Fragment {
 
         importb.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                db.importrecords();
+            public void onClick(View v){
+                new MaterialFilePicker()
+                        .withSupportFragment(SettingsFragment.this)
+                        .withCloseMenu(true)
+                        .withFilter(Pattern.compile(".*\\.(txt|tohumlama)$"))
+                        .withFilterDirectories(false)
+                        .withTitle("İçe aktar")
+                        .start();
             }
         });
 
@@ -46,7 +65,7 @@ public class SettingsFragment extends Fragment {
         exportb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.export();
+                db.exportr();
             }
         });
 
@@ -68,5 +87,16 @@ public class SettingsFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            String path = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+            Database db = new Database(context);
+            db.importr(new File(path));
+        }
     }
 }
