@@ -1,4 +1,4 @@
-package com.osmanyasirinan.sunitohumlama.database;
+package com.osmanyasirinan.sunitohumlama.hayvan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.Utils;
 import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 import java.util.Calendar;

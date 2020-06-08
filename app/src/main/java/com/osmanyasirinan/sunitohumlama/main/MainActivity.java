@@ -7,14 +7,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.osmanyasirinan.sunitohumlama.R;
-import com.osmanyasirinan.sunitohumlama.database.FilterActivity;
-import com.osmanyasirinan.sunitohumlama.database.YeniHayvan;
+import com.osmanyasirinan.sunitohumlama.hayvan.FilterActivity;
+import com.osmanyasirinan.sunitohumlama.hayvan.YeniHayvan;
 
 public class MainActivity extends AppCompatActivity {
 

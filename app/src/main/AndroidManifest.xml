@@ -12,18 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBarTheme">
-        <activity android:name=".database.FilterActivity"
+        <activity android:name=".hayvan.FilterActivity"
             android:parentActivityName=".main.MainActivity"/>
         <activity
-            android:name=".database.HayvanDuzenle"
-            android:parentActivityName=".database.HayvanDetay"
+            android:name=".hayvan.HayvanDuzenle"
+            android:parentActivityName=".hayvan.HayvanDetay"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".database.HayvanDetay"
+            android:name=".hayvan.HayvanDetay"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".database.YeniHayvan"
+            android:name=".hayvan.YeniHayvan"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name=".main.MainActivity"/>

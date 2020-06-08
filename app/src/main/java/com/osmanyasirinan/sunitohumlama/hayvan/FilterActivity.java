@@ -1,8 +1,7 @@
-package com.osmanyasirinan.sunitohumlama.database;
+package com.osmanyasirinan.sunitohumlama.hayvan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,11 +11,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.MonthYearPickerDialog;
 import com.osmanyasirinan.sunitohumlama.R;
-import com.osmanyasirinan.sunitohumlama.main.FilteredFragment;
+import com.osmanyasirinan.sunitohumlama.Utils;
 import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 public class FilterActivity extends AppCompatActivity {

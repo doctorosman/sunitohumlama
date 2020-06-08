@@ -1,4 +1,4 @@
-package com.osmanyasirinan.sunitohumlama.database;
+package com.osmanyasirinan.sunitohumlama;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,19 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.osmanyasirinan.sunitohumlama.hayvan.Hayvan;
+import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -30,13 +25,19 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "hayvanlar";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLO_HAYVANLAR = "hayvanlar";
     private static final String ROW_ID = "id";
+
+    private static final String TABLO_HAYVANLAR = "hayvanlar";
     private static final String ROW_SAHIP = "sahip";
     private static final String ROW_ESGAL = "esgal";
     private static final String ROW_TOHUM = "tohum";
     private static final String ROW_KOY = "koy";
     private static final String ROW_TARIH = "tarih";
+
+    private static final String TABLO_TOHUMLAR = "tohumlar";
+    private static final String ROW_ISIM = "isim";
+    private static final String ROW_MIKTAR = "miktar";
+
     static Calendar c = Calendar.getInstance();
     public int YIL = c.get(Calendar.YEAR);
     private Context context;
@@ -55,13 +56,21 @@ public class Database extends SQLiteOpenHelper {
                 ROW_TOHUM + " TEXT NOT NULL, " +
                 ROW_KOY + " TEXT NOT NULL, " +
                 ROW_TARIH + " TEXT NOT NULL)");
+
+        db.execSQL("CREATE TABLE " + TABLO_TOHUMLAR + "(" +
+                ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ROW_ISIM + " TEXT NOT NULL, " +
+                ROW_MIKTAR + " INTEGER NOT NULL)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLO_HAYVANLAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLO_TOHUMLAR);
         onCreate(db);
     }
+
+    // HAYVANLAR TABLOSU
 
     public void veriEkle(String sahip, String esgal, String tohum, String koy, String tarih){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -217,11 +226,6 @@ public class Database extends SQLiteOpenHelper {
 
         }
         db.close();
-    }
-
-    public void deleteAllRecords(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLO_HAYVANLAR);
     }
 
     public int getAyKayit(int a){
@@ -387,6 +391,94 @@ public class Database extends SQLiteOpenHelper {
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // TOHUMLAR TABLOSU
+
+    public void tohumEkle(String isim, String miktar){
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(ROW_ISIM, isim);
+            values.put(ROW_MIKTAR, miktar);
+            db.insert(TABLO_TOHUMLAR, null, values);
+        }catch (Exception ignored){}
+        db.close();
+    }
+
+    public Tohum tohumAra(int p) {
+        Tohum tohum = null;
+        String query = "SELECT * FROM " + TABLO_TOHUMLAR + " WHERE id=" + p;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        c.moveToFirst();
+        if (c.getCount() > 0) {
+            tohum = new Tohum(c.getString(1), c.getInt(2));
+        }
+        c.close();
+        db.close();
+        return tohum;
+    }
+
+    public void tohumDuzenle(int id, String isim, int miktar) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(ROW_ISIM, isim);
+            values.put(ROW_MIKTAR, miktar);
+            String where = ROW_ID + " = '" + id + "'";
+            db.update(TABLO_TOHUMLAR, values, where, null);
+        }catch (Exception ignored){}
+        db.close();
+    }
+
+    public void tohumSil(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            String where = ROW_ID + " = " + id;
+            db.delete(TABLO_TOHUMLAR, where, null);
+        }catch (Exception ignored){}
+        db.close();
+    }
+
+    public List<Tohum> tohumListele() {
+        List<Tohum> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_TOHUMLAR, null);
+            if (cursor.moveToFirst()){
+                do {
+                    list.add(new Tohum(
+                            cursor.getString(1),
+                            cursor.getInt(2)
+                    ));
+                }while (cursor.moveToNext());
+            }
+            cursor.close();
+        }catch (Exception ignored){}
+
+        db.close();
+        return list;
+    }
+
+    public List<Integer> tohumIdListele() {
+        List<Integer> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_TOHUMLAR, null);
+            if (cursor.moveToFirst()){
+                do {
+                    list.add(cursor.getInt(0));
+                }while (cursor.moveToNext());
+            }
+            cursor.close();
+        }catch (Exception ignored){}
+
+        db.close();
+        return list;
     }
 
 }

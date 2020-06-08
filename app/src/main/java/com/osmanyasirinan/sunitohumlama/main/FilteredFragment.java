@@ -11,17 +11,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.osmanyasirinan.sunitohumlama.R;
-import com.osmanyasirinan.sunitohumlama.database.Database;
-import com.osmanyasirinan.sunitohumlama.database.FilterActivity;
-import com.osmanyasirinan.sunitohumlama.database.Hayvan;
-import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
+import com.osmanyasirinan.sunitohumlama.Database;
+import com.osmanyasirinan.sunitohumlama.hayvan.FilterActivity;
+import com.osmanyasirinan.sunitohumlama.hayvan.Hayvan;
+import com.osmanyasirinan.sunitohumlama.hayvan.HayvanDetay;
 
 import java.util.ArrayList;
 import java.util.List;

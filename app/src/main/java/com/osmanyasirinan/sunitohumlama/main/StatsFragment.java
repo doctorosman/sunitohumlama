@@ -1,24 +1,21 @@
 package com.osmanyasirinan.sunitohumlama.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.osmanyasirinan.sunitohumlama.database.Database;
+import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
-import com.osmanyasirinan.sunitohumlama.database.Utils;
+import com.osmanyasirinan.sunitohumlama.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;

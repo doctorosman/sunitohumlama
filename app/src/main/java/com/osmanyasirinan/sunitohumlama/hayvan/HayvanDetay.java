@@ -1,4 +1,4 @@
-package com.osmanyasirinan.sunitohumlama.database;
+package com.osmanyasirinan.sunitohumlama.hayvan;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
 
 public class HayvanDetay extends AppCompatActivity {

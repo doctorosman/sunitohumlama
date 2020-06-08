@@ -1,4 +1,6 @@
-package com.osmanyasirinan.sunitohumlama.database;
+package com.osmanyasirinan.sunitohumlama.hayvan;
+
+import com.osmanyasirinan.sunitohumlama.Utils;
 
 import java.util.Calendar;
 

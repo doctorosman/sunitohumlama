@@ -18,12 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.osmanyasirinan.sunitohumlama.database.Database;
-import com.osmanyasirinan.sunitohumlama.database.HayvanDetay;
+import com.osmanyasirinan.sunitohumlama.Database;
+import com.osmanyasirinan.sunitohumlama.hayvan.HayvanDetay;
 import com.osmanyasirinan.sunitohumlama.R;
 
 import java.util.List;
-import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
