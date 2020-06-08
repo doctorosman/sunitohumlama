@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         nav = findViewById(R.id.navview);
         nav.initWithSaveInstanceState(savedInstanceState);
         nav.addSpaceItem(new SpaceItem("", R.drawable.ic_home_black_24dp));
-        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_show_chart_black_24dp));
+        nav.addSpaceItem(new SpaceItem("", R.drawable.ic_storage_black_24dp));
         nav.addSpaceItem(new SpaceItem("", R.drawable.ic_sort_black_24dp));
         nav.addSpaceItem(new SpaceItem("", R.drawable.ic_settings_black_24dp));
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case 1:
-                        selectedFragment = new StatsFragment(MainActivity.this);
+                        selectedFragment = new StocksFragment(MainActivity.this);
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
                         break;
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case 1:
-                        selectedFragment = new StatsFragment(MainActivity.this);
+                        selectedFragment = new StocksFragment(MainActivity.this);
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
                         break;
 
@@ -108,10 +108,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void github(View view){
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/doctorosman/sunitohumlama"));
-        startActivity(i);
     }
 }

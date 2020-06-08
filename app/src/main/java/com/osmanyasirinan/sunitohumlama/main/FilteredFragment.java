@@ -55,12 +55,9 @@ public class FilteredFragment extends Fragment {
 
         sort = v.findViewById(R.id.sortit);
 
-        sort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, FilterActivity.class);
-                startActivity(i);
-            }
+        sort.setOnClickListener(v -> {
+            Intent i = new Intent(context, FilterActivity.class);
+            startActivity(i);
         });
 
         return v;
