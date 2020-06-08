@@ -19,9 +19,6 @@ Serbest çalışan veteriner hekimler için suni tohumlama ve tohum stoğu takip
 
 > İçe veya dışa aktarma özelliğini kullanabilmeniz için uygulamaya kayıt yeri veya depolama izni vermeniz gerekmektedir.
 
-## İçe Aktarma
-Kayıtlarınızın bulunduğu dosyanın ismini 'import.tohumlama' olarak değiştirerek telefonunuzun dahili depolamasında bulunan Documents (Belgeler) klasörünün içerisine atın. Daha sonra uygulamadaki ayarlar bölümünden içe aktarma işlemini tamamlayın.
-
 ## Kayıtlar
 Kayıtlarda girebileceğiniz, veritabanına işlenen bilgiler şu şekildedir:
 1. Hayvan sahibinin adı
