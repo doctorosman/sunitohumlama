@@ -8,19 +8,25 @@
         android:title="Ana Sayfa"/>
 
     <item
-        android:id="@+id/nav_add"
-        android:icon="@drawable/ic_add_black_24dp"
-        android:title="Yeni"/>
+        android:id="@+id/nav_tohums"
+        android:icon="@drawable/bubble_the_black"
+        android:title="Tohumlar"/>
+
+-
+    <item
+        android:id="@+id/nav_filter"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="Filtre"/>
+
 
     <item
         android:id="@+id/nav_stats"
         android:icon="@drawable/ic_show_chart_black_24dp"
         android:title="Veriler"/>
 
-    <!-- SOON
     <item
-        android:id="@+id/filter"
-        android:icon="@drawable/ic_menu_black_24dp"
-        android:title="Filtre"/> -->
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Ayarlar"/>
 
 </menu>

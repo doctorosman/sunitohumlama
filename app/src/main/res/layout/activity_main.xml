@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,9 +10,25 @@
         android:id="@+id/fragmentcontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/view_bottom_margin" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/view_bottom_margin"/>
 
-    <com.luseen.spacenavigation.SpaceNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="12dp"
+        app:menu="@menu/navbar"
+        android:background="@drawable/bottomnavbg"
+        app:labelVisibilityMode="unlabeled"/>
+
+    
+    <!-- <com.luseen.spacenavigation.SpaceNavigationView
         android:id="@+id/navview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,6 +42,6 @@
         app:centre_button_icon="@drawable/ic_add_black_24dp"
         app:space_item_icon_size="@dimen/space_item_icon_default_size"
         app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
-        app:space_item_text_size="@dimen/space_item_text_default_size" />
+        app:space_item_text_size="@dimen/space_item_text_default_size" />-->
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

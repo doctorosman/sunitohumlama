@@ -22,7 +22,7 @@ public class StocksFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_stocks, container, null);
+        v = inflater.inflate(R.layout.fragment_stocks, container, false);
 
         return v;
     }
