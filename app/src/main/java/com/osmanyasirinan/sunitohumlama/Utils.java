@@ -2,7 +2,11 @@ package com.osmanyasirinan.sunitohumlama;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Utils {
 
@@ -32,6 +36,25 @@ public class Utils {
                     image.setImageResource(oldID);
                 else
                     image.setImageResource(newID);
+            }
+        };
+    }
+
+    public AdapterView.OnItemSelectedListener itemSelectedListener(final ImageView img, final int oldID, final int newID){
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+
+                if (position > 0)
+                    img.setImageResource(newID);
+                else
+                    img.setImageResource(oldID);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                img.setImageResource(oldID);
             }
         };
     }

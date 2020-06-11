@@ -58,7 +58,7 @@ public class StatsFragment extends Fragment {
         total.setAdapter(xadapter);
 
         Refresh();
-        return v;
+         return v;
     }
 
     public void Refresh(){

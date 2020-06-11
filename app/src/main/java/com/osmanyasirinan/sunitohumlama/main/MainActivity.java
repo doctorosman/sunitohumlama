@@ -85,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomeFragment(this)).commit();
+
         strings = getIntent().getStringArrayExtra("strings");
         parts = getIntent().getIntArrayExtra("parts");
     }
@@ -96,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         if (strings != null && parts != null) {
             Fragment f = new FilteredFragment(MainActivity.this, strings, parts);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, f).commit();
-        }else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomeFragment(MainActivity.this)).commit();
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.osmanyasirinan.sunitohumlama.main;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -91,6 +92,7 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(v -> {
             Intent i = new Intent(context, YeniHayvan.class);
             startActivity(i);
+            ((Activity) context).finish();
         });
 
         return v;

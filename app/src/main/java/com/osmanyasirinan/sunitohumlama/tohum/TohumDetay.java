@@ -32,7 +32,7 @@ public class TohumDetay extends AppCompatActivity {
         Database db = new Database(this);
 
         tohum.setText(db.tohumAra(id).getIsim());
-        miktar.setText(db.tohumAra(id).getMiktar());
+        miktar.setText(String.valueOf(db.tohumAra(id).getMiktar()));
 
         edit.setOnClickListener(v -> {
             Intent i = new Intent(TohumDetay.this, TohumDuzenle.class);

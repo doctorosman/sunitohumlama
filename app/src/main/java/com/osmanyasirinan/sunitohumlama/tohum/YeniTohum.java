@@ -2,6 +2,7 @@ package com.osmanyasirinan.sunitohumlama.tohum;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
 import com.osmanyasirinan.sunitohumlama.Utils;
 import com.osmanyasirinan.sunitohumlama.hayvan.YeniHayvan;
+import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 
 public class YeniTohum extends AppCompatActivity {
 
@@ -39,12 +41,16 @@ public class YeniTohum extends AppCompatActivity {
 
         arttir.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) + 20;
-            miktar.setText(newValue);
+            String newstr = String.valueOf(newValue);
+            miktar.setText(newstr);
         });
 
         azalt.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) - 20;
-            miktar.setText(newValue);
+            if (newValue >= 0){
+                String newstr = String.valueOf(newValue);
+                miktar.setText(newstr);
+            }
         });
 
         kaydet.setOnClickListener(v -> {

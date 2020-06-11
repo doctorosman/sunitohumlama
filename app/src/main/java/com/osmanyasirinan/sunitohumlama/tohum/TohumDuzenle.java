@@ -25,6 +25,13 @@ public class TohumDuzenle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tohum_duzenle);
 
+        img = findViewById(R.id.tohumeditimgview);
+        tohum = findViewById(R.id.tohumeditet);
+        miktar = findViewById(R.id.tohumeditmiktar);
+        arttir = findViewById(R.id.tohumeditarttir);
+        azalt = findViewById(R.id.tohumeditazalt);
+        kaydet = findViewById(R.id.tohumeditb);
+
         int id = getIntent().getIntExtra("id", 0);
 
         Database db = new Database(this);
@@ -33,18 +40,19 @@ public class TohumDuzenle extends AppCompatActivity {
         int miktarint = db.tohumAra(id).getMiktar();
 
         tohum.setText(tohumstr);
-        miktar.setText(miktarint);
+        miktar.setText(String.valueOf(miktarint));
 
         tohum.addTextChangedListener(new Utils().watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
         arttir.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) + 20;
-            miktar.setText(newValue);
+            miktar.setText(String.valueOf(newValue));
         });
 
         azalt.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) - 20;
-            miktar.setText(newValue);
+            if (newValue >= 0)
+                miktar.setText(String.valueOf(newValue));
         });
 
         kaydet.setOnClickListener(v -> {

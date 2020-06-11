@@ -451,6 +451,7 @@ public class Database extends SQLiteOpenHelper {
             if (cursor.moveToFirst()){
                 do {
                     list.add(new Tohum(
+                            cursor.getInt(0),
                             cursor.getString(1),
                             cursor.getInt(2)
                     ));
@@ -479,6 +480,10 @@ public class Database extends SQLiteOpenHelper {
 
         db.close();
         return list;
+    }
+
+    public void tohumAzalt(int id) {
+        tohumDuzenle(id, tohumAra(id).getIsim(), tohumAra(id).getMiktar() - 1);
     }
 
 }
