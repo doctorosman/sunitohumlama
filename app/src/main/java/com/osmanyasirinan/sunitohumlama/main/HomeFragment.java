@@ -18,9 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.hayvan.HayvanDetay;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.hayvan.YeniHayvan;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class HomeFragment extends Fragment {
     private Context context;
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
+    private FloatingActionButton fab;
 
     public HomeFragment(Context context){
         this.context = context;
@@ -52,6 +55,7 @@ public class HomeFragment extends Fragment {
 
         et = v.findViewById(R.id.srch);
         lv = v.findViewById(R.id.list);
+        fab = v.findViewById(R.id.fab);
 
         et.addTextChangedListener(new TextWatcher() {
             @Override
@@ -71,20 +75,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Database db = new Database(context);
-                int did;
-                if (et.getText().toString().equals(""))
-                    did = db.idListele().get(position);
-                else
-                    did = db.idListele(et.getText().toString()).get(position);
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            Database db = new Database(context);
+            int did;
+            if (et.getText().toString().equals(""))
+                did = db.idListele().get(position);
+            else
+                did = db.idListele(et.getText().toString()).get(position);
 
-                Intent i = new Intent(context, HayvanDetay.class);
-                i.putExtra("id", did);
-                startActivity(i);
-            }
+            Intent i = new Intent(context, HayvanDetay.class);
+            i.putExtra("id", did);
+            startActivity(i);
+        });
+
+        fab.setOnClickListener(v -> {
+            Intent i = new Intent(context, YeniHayvan.class);
+            startActivity(i);
         });
 
         return v;

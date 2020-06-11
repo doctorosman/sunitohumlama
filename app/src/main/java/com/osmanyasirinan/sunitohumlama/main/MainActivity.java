@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.resources.TextAppearance;
 import com.osmanyasirinan.sunitohumlama.R;
-import com.osmanyasirinan.sunitohumlama.hayvan.FilterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         });
-
         strings = getIntent().getStringArrayExtra("strings");
         parts = getIntent().getIntArrayExtra("parts");
     }

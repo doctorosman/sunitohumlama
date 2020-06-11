@@ -42,34 +42,23 @@ public class HayvanDetay extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HayvanDetay.this, HayvanDuzenle.class);
-                i.putExtra("id", id);
-                startActivity(i);
-            }
+        edit.setOnClickListener(v -> {
+            Intent i = new Intent(HayvanDetay.this, HayvanDuzenle.class);
+            i.putExtra("id", id);
+            startActivity(i);
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 new AlertDialog.Builder(HayvanDetay.this)
-                        .setTitle("Oyi Suni Tohumlama")
-                        .setMessage("Silmek istediğinize emin misiniz?")
-                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Database db = new Database(HayvanDetay.this);
-                                db.veriSil(id);
-                                finish();
-                            }
-                        })
-                        .setNegativeButton(R.string.no, null)
-                        .setIcon(R.drawable.dialog_delete)
-                        .show();
-            }
-        });
+        delete.setOnClickListener(v -> new AlertDialog.Builder(HayvanDetay.this)
+               .setTitle("Oyi Suni Tohumlama")
+               .setMessage("Silmek istediğinize emin misiniz?")
+               .setPositiveButton(R.string.yes, (dialog, which) -> {
+                   Database db = new Database(HayvanDetay.this);
+                   db.veriSil(id);
+                   finish();
+               })
+               .setNegativeButton(R.string.no, null)
+               .setIcon(R.drawable.dialog_delete)
+               .show());
     }
 
     @Override

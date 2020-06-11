@@ -395,7 +395,7 @@ public class Database extends SQLiteOpenHelper {
 
     // TOHUMLAR TABLOSU
 
-    public void tohumEkle(String isim, String miktar){
+    public void tohumEkle(String isim, int miktar){
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues values = new ContentValues();

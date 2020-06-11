@@ -49,35 +49,29 @@ public class HayvanDuzenle extends AppCompatActivity {
 
         currentDate = h.getTarih();
 
-        cb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar takvim = Calendar.getInstance();
-                int gun = takvim.get(Calendar.DAY_OF_MONTH);
-                int ay = takvim.get(Calendar.MONTH);
-                int yil = takvim.get(Calendar.YEAR);
+        cb.setOnClickListener(v -> {
+            final Calendar takvim = Calendar.getInstance();
+            int gun = takvim.get(Calendar.DAY_OF_MONTH);
+            int ay = takvim.get(Calendar.MONTH);
+            int yil = takvim.get(Calendar.YEAR);
 
-                DatePickerDialog dpd = new DatePickerDialog(HayvanDuzenle.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month += 1;
-                        currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
-                    }
-                }, yil, ay, gun);
+            DatePickerDialog dpd = new DatePickerDialog(HayvanDuzenle.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month += 1;
+                    currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
+                }
+            }, yil, ay, gun);
 
-                dpd.show();
-            }
+            dpd.show();
         });
 
         setItems();
 
-        kaydet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Database vt = new Database(HayvanDuzenle.this);
-                vt.veriDuzenle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
-                finish();
-            }
+        kaydet.setOnClickListener(v -> {
+            Database vt = new Database(HayvanDuzenle.this);
+            vt.veriDuzenle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString(), currentDate);
+            finish();
         });
 
         sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));

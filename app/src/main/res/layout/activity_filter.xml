@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".hayvan.FilterActivity">
+    tools:context=".main.FilterActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/pickay"

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".tohum.TohumDetay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/bubble_colorful" />
+
+            <TextView
+                android:id="@+id/tohumdetaytohum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Tohum Adı"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_data_usage_black_24dp" />
+
+            <TextView
+                android:id="@+id/tohumdetaymiktar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Tohum Miktarı"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/tohumdetayedit"
+            android:layout_width="100dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="50dp"
+            android:background="#7B1FA2"
+            app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/tohumdetaydelete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="#D32F2F"
+            app:srcCompat="@drawable/ic_delete_black_24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
