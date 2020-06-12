@@ -118,9 +118,11 @@ public class YeniHayvan extends AppCompatActivity {
             String sahip = sahipet.getText().toString();
             String koy = koyet.getText().toString();
             String esgal = esgalet.getText().toString();
-            String tohum = "";
+            String tohum;
 
-            if (!spinner.getSelectedItem().toString().equals("Stokta tohum yok") && !spinner.getSelectedItem().toString().equals("Tohum seçin")) {
+            if (spinner.getSelectedItem().toString().equals("Stokta tohum yok") || spinner.getSelectedItem().toString().equals("Tohum seçin")) {
+                tohum = "";
+            }else {
                 tohum = spinner.getSelectedItem().toString();
             }
 
@@ -128,7 +130,7 @@ public class YeniHayvan extends AppCompatActivity {
             vt.veriEkle(sahip, esgal, tohum, koy, currentDate);
 
             if (!tohum.equals(""))
-                vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition() - 1));
+                vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition()));
             bitir();
         });
     }

@@ -486,4 +486,8 @@ public class Database extends SQLiteOpenHelper {
         tohumDuzenle(id, tohumAra(id).getIsim(), tohumAra(id).getMiktar() - 1);
     }
 
+    public void tohumArttir(int id) {
+        tohumDuzenle(id, tohumAra(id).getIsim(), tohumAra(id).getMiktar() + 1);
+    }
+
 }

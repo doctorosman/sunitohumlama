@@ -77,13 +77,11 @@
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
 
-            <EditText
-                android:id="@+id/tohumdet"
+            <Spinner
+                android:id="@+id/hayvaneditspinner"
+                android:layout_marginStart="5dp"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/tohum"
-                android:inputType="textCapSentences" />
+                android:layout_height="wrap_content" />
 
         </TableRow>
 

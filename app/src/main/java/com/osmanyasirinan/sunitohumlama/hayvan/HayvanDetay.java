@@ -3,10 +3,8 @@ package com.osmanyasirinan.sunitohumlama.hayvan;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -51,11 +49,22 @@ public class HayvanDetay extends AppCompatActivity {
         delete.setOnClickListener(v -> new AlertDialog.Builder(HayvanDetay.this)
                .setTitle("Oyi Suni Tohumlama")
                .setMessage("Silmek istediğinize emin misiniz?")
-               .setPositiveButton(R.string.yes, (dialog, which) -> {
-                   Database db = new Database(HayvanDetay.this);
-                   db.veriSil(id);
-                   finish();
-               })
+               .setPositiveButton(R.string.yes, (dialog, which) -> new AlertDialog.Builder(HayvanDetay.this)
+                       .setTitle("Oyi Suni Tohumlama")
+                       .setMessage("Tohumu kullandınız mı?")
+                       .setPositiveButton(R.string.yes, ((dialog1, which1) -> {
+                           Database db = new Database(HayvanDetay.this);
+                           db.veriSil(id);
+                           finish();
+                       }))
+                       .setNegativeButton(R.string.no, (((dialog1, which1) -> {
+                           Database db = new Database(HayvanDetay.this);
+                           db.veriSil(id);
+                           db.tohumArttir(id);
+                           finish();
+                       })))
+                       .setIcon(R.drawable.dialog_delete)
+                       .show())
                .setNegativeButton(R.string.no, null)
                .setIcon(R.drawable.dialog_delete)
                .show());
@@ -79,4 +88,5 @@ public class HayvanDetay extends AppCompatActivity {
         String tahmini = getString(R.string.tahmini) + "  " + h.getTahminiDogum();
         tahminidogum.setText(tahmini);
     }
+
 }
