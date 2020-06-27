@@ -92,7 +92,6 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(v -> {
             Intent i = new Intent(context, YeniHayvan.class);
             startActivity(i);
-            ((Activity) context).finish();
         });
 
         return v;

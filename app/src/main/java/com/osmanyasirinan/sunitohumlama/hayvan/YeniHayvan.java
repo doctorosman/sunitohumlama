@@ -137,8 +137,6 @@ public class YeniHayvan extends AppCompatActivity {
 
     private void bitir(){
         Toast.makeText(getApplicationContext(), "Hayvan eklendi.",Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(YeniHayvan.this, MainActivity.class);
-        startActivity(i);
         finish();
     }
 
