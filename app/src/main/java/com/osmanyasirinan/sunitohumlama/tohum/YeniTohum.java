@@ -55,9 +55,21 @@ public class YeniTohum extends AppCompatActivity {
 
         kaydet.setOnClickListener(v -> {
             Database db = new Database(YeniTohum.this);
-            db.tohumEkle(tohum.getText().toString(), Integer.parseInt(miktar.getText().toString()));
-            Toast.makeText(getApplicationContext(), "Tohum eklendi.",Toast.LENGTH_SHORT).show();
-            finish();
+            boolean esit = false;
+
+            for (Tohum t : db.tohumListele()) {
+                if (t.getIsim().equals(tohum.getText().toString()))
+                    esit = true;
+            }
+
+            if (!tohum.getText().toString().equals("")) {
+                if (!esit) {
+                    db.tohumEkle(tohum.getText().toString(), Integer.parseInt(miktar.getText().toString()));
+                    Toast.makeText(getApplicationContext(), "Tohum eklendi.", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else
+                    Toast.makeText(getApplicationContext(), "Aynı adda tohum bulunuyor.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

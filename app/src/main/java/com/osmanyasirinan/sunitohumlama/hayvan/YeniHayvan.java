@@ -130,7 +130,7 @@ public class YeniHayvan extends AppCompatActivity {
             vt.veriEkle(sahip, esgal, tohum, koy, currentDate);
 
             if (!tohum.equals(""))
-                vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition()));
+                vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition() - 1));
             bitir();
         });
     }

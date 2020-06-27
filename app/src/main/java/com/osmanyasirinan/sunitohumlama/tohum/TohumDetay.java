@@ -17,6 +17,8 @@ public class TohumDetay extends AppCompatActivity {
 
     TextView tohum, miktar;
     ImageButton delete, edit;
+    Database db = new Database(this);
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,7 @@ public class TohumDetay extends AppCompatActivity {
         delete = findViewById(R.id.tohumdetaydelete);
         edit = findViewById(R.id.tohumdetayedit);
 
-        int id = getIntent().getIntExtra("id", 0);
-        Database db = new Database(this);
-
-        tohum.setText(db.tohumAra(id).getIsim());
-        miktar.setText(String.valueOf(db.tohumAra(id).getMiktar()));
+        id = getIntent().getIntExtra("id", 0);
 
         edit.setOnClickListener(v -> {
             Intent i = new Intent(TohumDetay.this, TohumDuzenle.class);
@@ -50,5 +48,12 @@ public class TohumDetay extends AppCompatActivity {
                 .setNegativeButton(R.string.no, null)
                 .setIcon(R.drawable.dialog_delete)
                 .show());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tohum.setText(db.tohumAra(id).getIsim());
+        miktar.setText(String.valueOf(db.tohumAra(id).getMiktar()));
     }
 }

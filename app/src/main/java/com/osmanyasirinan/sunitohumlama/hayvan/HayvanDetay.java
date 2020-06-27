@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 public class HayvanDetay extends AppCompatActivity {
 
@@ -60,7 +61,14 @@ public class HayvanDetay extends AppCompatActivity {
                        .setNegativeButton(R.string.no, (((dialog1, which1) -> {
                            Database db = new Database(HayvanDetay.this);
                            db.veriSil(id);
-                           db.tohumArttir(id);
+
+                           for (Tohum t : db.tohumListele()) {
+                               if (t.getIsim().equals(db.ara(id).getTohum())) {
+                                   db.tohumArttir(t.getId());
+                                   break;
+                               }
+                           }
+
                            finish();
                        })))
                        .setIcon(R.drawable.dialog_delete)

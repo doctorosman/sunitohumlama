@@ -102,6 +102,13 @@ public class HayvanDuzenle extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        int j = 0;
+        for (String s : newlist) {
+            if (s.equals(h.getTohum())) {
+                spinner.setSelection(j);
+            }
+            j++;
+        }
 
         spinner.setOnItemSelectedListener(new Utils().itemSelectedListener(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
@@ -118,23 +125,17 @@ public class HayvanDuzenle extends AppCompatActivity {
 
             vt.veriDuzenle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohum, koyet.getText().toString(), currentDate);
 
-            int i = 0;
-            int oldid = -1;
-            for (String s : strlist) {
-                if (s.equals(h.getTohum())) {
-                    if (!tohum.equals(s)){
-                        vt.tohumArttir(intlist.get(i));
+            if (!tohum.equals(h.getTohum())){
+                for (Tohum t : db.tohumListele()) {
+                    if (t.getIsim().equals(tohum)) {
+                        db.tohumAzalt(t.getId());
                     }
-                    oldid = i;
-                }else if (s.equals(tohum)) {
-                    vt.tohumAzalt(intlist.get(i));
 
-                    if (oldid != -1)
-                        vt.tohumArttir(oldid);
+                    if (t.getIsim().equals(h.getTohum())) {
+                        db.tohumArttir(t.getId());
+                    }
                 }
-                i++;
             }
-
 
             finish();
         });
@@ -144,15 +145,6 @@ public class HayvanDuzenle extends AppCompatActivity {
         sahipet.setText(h.getSahip());
         koyet.setText(h.getKoy());
         esgalet.setText(h.getEsgal());
-
-        int i = 0;
-        for (String s : strlist) {
-            if (s.equals(h.getTohum())) {
-                spinner.setSelection(i);
-                break;
-            }
-            i++;
-        }
     }
 
 
