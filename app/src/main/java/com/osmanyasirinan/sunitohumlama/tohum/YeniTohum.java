@@ -40,13 +40,13 @@ public class YeniTohum extends AppCompatActivity {
         tohum.addTextChangedListener(new Utils().watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
         arttir.setOnClickListener(v -> {
-            int newValue = Integer.parseInt(miktar.getText().toString()) + 20;
+            int newValue = Integer.parseInt(miktar.getText().toString()) + 25;
             String newstr = String.valueOf(newValue);
             miktar.setText(newstr);
         });
 
         azalt.setOnClickListener(v -> {
-            int newValue = Integer.parseInt(miktar.getText().toString()) - 20;
+            int newValue = Integer.parseInt(miktar.getText().toString()) - 25;
             if (newValue >= 0){
                 String newstr = String.valueOf(newValue);
                 miktar.setText(newstr);

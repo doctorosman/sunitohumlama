@@ -60,7 +60,6 @@ public class HayvanDetay extends AppCompatActivity {
                        }))
                        .setNegativeButton(R.string.no, (((dialog1, which1) -> {
                            Database db = new Database(HayvanDetay.this);
-                           db.veriSil(id);
 
                            for (Tohum t : db.tohumListele()) {
                                if (t.getIsim().equals(db.ara(id).getTohum())) {
@@ -69,6 +68,7 @@ public class HayvanDetay extends AppCompatActivity {
                                }
                            }
 
+                           db.veriSil(id);
                            finish();
                        })))
                        .setIcon(R.drawable.dialog_delete)
