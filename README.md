@@ -5,17 +5,16 @@
 Serbest çalışan veteriner hekimler için suni tohumlama ve tohum stoğu takip uygulaması.
 
 ## Kullanımı
-- Alt menüdeki + bölümünden yeni hayvan ekleyebilir, yanındaki veriler bölümünden ise günlük, aylık ve toplam kayıt sayısına ulaşabilirsiniz.
-- Aynı zamanda veriler bölümünden seçeceğiniz aya göre kayıtlara ulaşabilirsiniz.
-- Hayvan ekleme aşamasında girebileceğiniz bilgiler aşağıda verilmiştir. Bu bölümde takvim butonuna basarak yapılan tohumlamanın tarihini seçebilirsiniz. Eğer tarih seçmezseniz otomatik olarak bulunduğunuz günün tarihi girilecektir.
-- Yine üstte bulunan arama bölümünden kayıtları hayvan sahiplerinin adlarına göre listeleyebilirsiniz.
-- Arama bölümünün altında ise daha önce yapmış olduğunuz kayıtları bulabilirsiniz.
-- Listedeki herhangi bir kaydın üstüne tıkladığınızda o kayıtla ilgili detaylı bilgiye ulaşacaksınız.
-- Detaylı bilgilerini görüntülediğiniz kaydın sol altında yer alan kalem butonuyla o kaydı düzenleyebilir, yanındaki çöp kovası butonuyla ise o kaydı silebilirsiniz.
-- Filtreleme butonuna basarak en son kayıtları görebileceğiniz bölüme gidebilir, butona tekrar basarak filtreleme yapabilirsiniz.
-- Filtrele bölümünde kayıtları seçtiğiniz parametrelere göre filtreleyebilirsiniz.
-- Filtrele bölümünde yalnızca seçtiğiniz parametrelere göre kayıtlarınızı filtreleyebilirsiniz. Seçmediğiniz parametreler filtrelemede dikkate alınmayacaktır.
-- Sağ alttaki ayarlar kısmından önceki kayıtlarınızı bu sürüme aktarabilir veya bu sürümdeki kayıtlarınızı dışa aktarabilirsiniz.
+- Ana sayfada en son eklediğiniz hayvan kaydı en üstte olacak şekilde kayıtlarınız sıralanacaktır.
+- Yine ana sayfadaki + butonundan yeni hayvan kaydı ekleyebilirsiniz.
+- Tohumlama kaydı ekleyebilmeniz için stoğunuzda tohum bulunması gerekmektedir.
+- Tohumlar bölümünden mevcut tohumlarınızı görebilir, yeni tohumlar ekleyebilirsiniz.
+- Yaptığınız her tohumlamada seçtiğiniz tohum bir azaltılacaktır.
+- Yanlış bir giriş yapmanız durumunda kaydı silerken "Tohumu kullandınız mı?" bölümünde "HAYIR" seçeneğini işaretleyebilirsiniz.
+- Filtreleme bölümünde en son filtrelediğiniz kayıtlar karşınıza çıkacaktır.
+- Filtreleme bölümünde siyah filtreleme butonuna veya alt menüdeki mavi filtreleme butonuna tekrar basarak filtreleme işlemini gerçekleştirebilirsiniz.
+- Veriler bölümünde ay ay yaptığınız tohumlama kaydı sayısını görebilirsiniz.
+- Ayarlar bölümünde ise önceki sürümden kayıtlarınızı içe aktarabilir, verilerinizi yedeklemek ya da yeni sürüme geçmek için dışa aktarmayı da kullanabilirsiniz.
 
 > İçe veya dışa aktarma özelliğini kullanabilmeniz için uygulamaya kayıt yeri veya depolama izni vermeniz gerekmektedir.
 
