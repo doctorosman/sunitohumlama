@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Oyi Suni Tohumlama.iml" filepath="$PROJECT_DIR$/Oyi Suni Tohumlama.iml" group="Oyi Suni Tohumlama" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Oyi_Suni_Tohumlama.iml" filepath="$PROJECT_DIR$/.idea/modules/Oyi_Suni_Tohumlama.iml" group="Oyi_Suni_Tohumlama" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Oyi Suni Tohumlama/app" />
     </modules>
   </component>

@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.armcha:SpaceNavigationView:1.6.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/33a8d9471fc8f6891b47de3f4f0cba05/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/33a8d9471fc8f6891b47de3f4f0cba05/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0b9763fcea68dc5bf33eb7c36fe2025/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0b9763fcea68dc5bf33eb7c36fe2025/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0b9763fcea68dc5bf33eb7c36fe2025/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

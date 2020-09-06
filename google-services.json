@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "636699954257",
+    "firebase_url": "https://oyisunitohumlama.firebaseio.com",
+    "project_id": "oyisunitohumlama",
+    "storage_bucket": "oyisunitohumlama.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636699954257:android:c44e205c54482cb3f23c70",
+        "android_client_info": {
+          "package_name": "com.osmanyasirinan.sunitohumlama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636699954257-kk4eioisd3m0v7m974j0vb69g41dm9r2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQL9d1N3Dc6rwdeZJanShUPgSOGwObOy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636699954257-kk4eioisd3m0v7m974j0vb69g41dm9r2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
