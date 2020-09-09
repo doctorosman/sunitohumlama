@@ -64,7 +64,7 @@ public class FilteredFragment extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume();
+        super.onResume(); /*
         if (strings != null || parts != null) {
             Database db = new Database(context);
             List<String> sahips = new ArrayList<>();
@@ -86,6 +86,6 @@ public class FilteredFragment extends Fragment {
                     startActivity(i);
                 }
             });
-        }
+        } */
     }
 }

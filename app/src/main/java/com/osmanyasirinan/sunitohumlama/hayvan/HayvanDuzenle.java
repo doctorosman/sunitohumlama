@@ -17,6 +17,7 @@ import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class HayvanDuzenle extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class HayvanDuzenle extends AppCompatActivity {
     EditText sahipet, koyet, esgalet;
     Spinner spinner;
     Button kaydet, cb;
-    String currentDate;
+    Date currentDate;
     int id;
     Hayvan h;
     ImageView sahipimg, koyimg, tohumimg, esgalimg;
@@ -62,7 +63,14 @@ public class HayvanDuzenle extends AppCompatActivity {
 
             DatePickerDialog dpd = new DatePickerDialog(HayvanDuzenle.this, (view, year, month, dayOfMonth) -> {
                 month += 1;
-                currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
+
+                Calendar c = Calendar.getInstance();
+
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                currentDate = new Date(c.getTimeInMillis() / 1000L);
             }, yil, ay, gun);
 
             dpd.show();

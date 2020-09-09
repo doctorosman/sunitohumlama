@@ -55,7 +55,7 @@ public class SettingsFragment extends Fragment {
                 .start());
 
         exportb = v.findViewById(R.id.exportbutton);
-        exportb.setOnClickListener(v -> db.exportr());
+        //exportb.setOnClickListener(v -> db.exportr());
 
         return v;
     }
@@ -67,7 +67,7 @@ public class SettingsFragment extends Fragment {
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             String path = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             Database db = new Database(context);
-            db.importr(new File(path));
+            //db.importr(new File(path));
         }
     }
 }

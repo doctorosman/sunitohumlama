@@ -91,7 +91,7 @@ public class HayvanDetay extends AppCompatActivity {
         esgaltv.setText(h.getEsgal());
         tohumtv.setText(h.getTohum());
         koytv.setText(h.getKoy());
-        tarihtv.setText(h.getTarih());
+        tarihtv.setText(h.getTarihStr());
 
         String tahmini = getString(R.string.tahmini) + "  " + h.getTahminiDogum();
         tahminidogum.setText(tahmini);

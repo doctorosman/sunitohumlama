@@ -5,19 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
-import android.widget.Toast;
 
 import com.osmanyasirinan.sunitohumlama.hayvan.Hayvan;
 import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Database extends SQLiteOpenHelper {
@@ -55,7 +49,7 @@ public class Database extends SQLiteOpenHelper {
                 ROW_ESGAL + " TEXT NOT NULL, " +
                 ROW_TOHUM + " TEXT NOT NULL, " +
                 ROW_KOY + " TEXT NOT NULL, " +
-                ROW_TARIH + " TEXT NOT NULL)");
+                ROW_TARIH + " INTEGER NOT NULL)");
 
         db.execSQL("CREATE TABLE " + TABLO_TOHUMLAR + "(" +
                 ROW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -72,7 +66,7 @@ public class Database extends SQLiteOpenHelper {
 
     // HAYVANLAR TABLOSU
 
-    public void hayvanEkle(String sahip, String esgal, String tohum, String koy, String tarih){
+    public void hayvanEkle(String sahip, String esgal, String tohum, String koy, Date tarih){
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues cv = new ContentValues();
@@ -80,7 +74,7 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_ESGAL, esgal);
             cv.put(ROW_TOHUM, tohum);
             cv.put(ROW_KOY, koy);
-            cv.put(ROW_TARIH, tarih);
+            cv.put(ROW_TARIH, tarih.getTime());
             db.insert(TABLO_HAYVANLAR, null, cv);
         }catch (Exception ignored){}
 
@@ -163,7 +157,7 @@ public class Database extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         if(cursor.getCount() > 0){
-            h = new Hayvan(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+            h = new Hayvan(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), new Date(cursor.getLong(5)));
         }
 
         cursor.close();
@@ -171,7 +165,7 @@ public class Database extends SQLiteOpenHelper {
         return h;
     }
 
-    public void hayvanGuncelle(int id, String sahip, String esgal, String tohum, String koy, String tarih){
+    public void hayvanGuncelle(int id, String sahip, String esgal, String tohum, String koy, Date tarih){
         SQLiteDatabase db = this.getWritableDatabase();
 
         try {
@@ -180,7 +174,7 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_ESGAL, esgal);
             cv.put(ROW_TOHUM, tohum);
             cv.put(ROW_KOY, koy);
-            cv.put(ROW_TARIH, tarih);
+            cv.put(ROW_TARIH, tarih.getTime());
             String where = ROW_ID + " = '" + id + "'";
             db.update(TABLO_HAYVANLAR, cv, where, null);
         }catch (Exception ignored){}
@@ -239,7 +233,8 @@ public class Database extends SQLiteOpenHelper {
         return sayi;
     }
 
-    public List<Hayvan> filtrele(String sahip, String esgal, String tohum, String koy, int ay, int yil) {
+    // TODO
+    /*public List<Hayvan> filtrele(String sahip, String esgal, String tohum, String koy, int ay, int yil) {
         List<Hayvan> list = new ArrayList<>();
         String sql = "SELECT id, sahip, esgal, tohum, koy, tarih FROM " + TABLO_HAYVANLAR;
         boolean putAnd = false;
@@ -279,7 +274,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(sql, null);
         if (c.moveToFirst()){
             do {
-                list.add(new Hayvan(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5)));
+                list.add(new Hayvan(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), new Date(c.getLong(5))));
             }while (c.moveToNext());
         }
         c.close();
@@ -298,7 +293,7 @@ public class Database extends SQLiteOpenHelper {
         }else{
             return list;
         }
-    }
+    } */
 
     public List<Hayvan> hayvanListele() {
         List<Hayvan> veriler = new ArrayList<>();
@@ -313,7 +308,7 @@ public class Database extends SQLiteOpenHelper {
                             cursor.getString(2),
                             cursor.getString(3),
                             cursor.getString(4),
-                            cursor.getString(5)
+                            new Date(cursor.getLong(5))
                     ));
                 }while (cursor.moveToNext());
             }
@@ -323,7 +318,8 @@ public class Database extends SQLiteOpenHelper {
         return veriler;
     }
 
-    public void importr(File f) {
+    // TODO
+    /* public void importr(File f) {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(f));
@@ -343,9 +339,10 @@ public class Database extends SQLiteOpenHelper {
         }catch (IOException e){
             e.printStackTrace();
         }
-    }
+    } */
 
-    public void exportr(){
+    // TODO
+    /*public void exportr(){
         int n = 0;
         StringBuilder text = new StringBuilder();
         for (Hayvan h : hayvanListele()) {
@@ -362,7 +359,7 @@ public class Database extends SQLiteOpenHelper {
         }catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
     // TOHUMLAR TABLOSU
 
@@ -460,5 +457,9 @@ public class Database extends SQLiteOpenHelper {
     public void tohumArttir(int id) {
         tohumDuzenle(id, tohumAra(id).getIsim(), tohumAra(id).getMiktar() + 1);
     }
+
+    // TODO
+    // tohumDisaAktar();
+    // togumIceAktar();
 
 }

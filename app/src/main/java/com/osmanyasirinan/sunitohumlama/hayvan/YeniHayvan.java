@@ -24,6 +24,7 @@ import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class YeniHayvan extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class YeniHayvan extends AppCompatActivity {
     ImageView sahipimg, koyimg, tohumimg, esgalimg;
     EditText sahipet, koyet, esgalet;
     Button kaydet, cb;
-    String currentDate;
+    Date currentDate;
     Spinner spinner;
     List<Integer> intlist;
 
@@ -53,22 +54,25 @@ public class YeniHayvan extends AppCompatActivity {
         cb = findViewById(R.id.cb);
 
         Calendar calendar = Calendar.getInstance();
-        int gun = calendar.get(Calendar.DAY_OF_MONTH);
-        int ay = calendar.get(Calendar.MONTH) + 1;
-        int yil = calendar.get(Calendar.YEAR);
-
-        currentDate = new Utils().putZeros(gun) + "." + new Utils().putZeros(ay) + "." + yil;
+        currentDate = new Date(calendar.getTimeInMillis());
 
         cb.setOnClickListener(v -> {
             final Calendar takvim = Calendar.getInstance();
-            int gun1 = takvim.get(Calendar.DAY_OF_MONTH);
-            int ay1 = takvim.get(Calendar.MONTH);
-            int yil1 = takvim.get(Calendar.YEAR);
+            int gun = takvim.get(Calendar.DAY_OF_MONTH);
+            int ay = takvim.get(Calendar.MONTH);
+            int yil = takvim.get(Calendar.YEAR);
 
             DatePickerDialog dpd = new DatePickerDialog(YeniHayvan.this, (view, year, month, dayOfMonth) -> {
                 month += 1;
-                currentDate = new Utils().putZeros(dayOfMonth) + "." + new Utils().putZeros(month) + "." + year;
-            }, yil1, ay1, gun1);
+
+                Calendar c = Calendar.getInstance();
+
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                currentDate = new Date(c.getTimeInMillis() / 1000L);
+            }, yil, ay, gun);
 
             dpd.show();
         });
@@ -128,7 +132,6 @@ public class YeniHayvan extends AppCompatActivity {
 
             Database vt = new Database(YeniHayvan.this);
             vt.hayvanEkle(sahip, esgal, tohum, koy, currentDate);
-
             if (!tohum.equals(""))
                 vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition() - 1));
             bitir();
