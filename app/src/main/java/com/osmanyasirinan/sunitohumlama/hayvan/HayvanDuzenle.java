@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -52,7 +50,7 @@ public class HayvanDuzenle extends AppCompatActivity {
 
         id = getIntent().getIntExtra("id", 0);
         Database db = new Database(this);
-        h = db.ara(id);
+        h = db.getHayvan(id);
 
         currentDate = h.getTarih();
 
@@ -123,7 +121,7 @@ public class HayvanDuzenle extends AppCompatActivity {
                 tohum = spinner.getSelectedItem().toString();
             }
 
-            vt.veriDuzenle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohum, koyet.getText().toString(), currentDate);
+            vt.hayvanGuncelle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohum, koyet.getText().toString(), currentDate);
 
             if (!tohum.equals(h.getTohum())){
                 for (Tohum t : db.tohumListele()) {

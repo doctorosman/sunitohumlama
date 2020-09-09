@@ -80,9 +80,9 @@ public class HomeFragment extends Fragment {
             Database db = new Database(context);
             int did;
             if (et.getText().toString().equals(""))
-                did = db.idListele().get(position);
+                did = db.hayvanIdListele().get(position);
             else
-                did = db.idListele(et.getText().toString()).get(position);
+                did = db.hayvanIdListele(et.getText().toString()).get(position);
 
             Intent i = new Intent(context, HayvanDetay.class);
             i.putExtra("id", did);
@@ -118,14 +118,14 @@ public class HomeFragment extends Fragment {
 
     private void Listele(){
         Database vt = new Database(context);
-        List<String> list = vt.veriListele();
+        List<String> list = vt.hayvanSahipListele();
         adapter = new ArrayAdapter<>(context, R.layout.card, R.id.tvad, list);
         lv.setAdapter(adapter);
     }
 
     private void listSearched(String str){
         Database vt = new Database(context);
-        List<String> list = vt.veriListele(str);
+        List<String> list = vt.hayvanSahipListele(str);
         adapter = new ArrayAdapter<>(context, R.layout.card, R.id.tvad, list);
         lv.setAdapter(adapter);
     }

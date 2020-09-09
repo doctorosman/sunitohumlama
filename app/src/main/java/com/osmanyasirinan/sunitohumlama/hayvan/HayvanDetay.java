@@ -55,20 +55,20 @@ public class HayvanDetay extends AppCompatActivity {
                        .setMessage("Tohumu kullandınız mı?")
                        .setPositiveButton(R.string.yes, ((dialog1, which1) -> {
                            Database db = new Database(HayvanDetay.this);
-                           db.veriSil(id);
+                           db.hayvanSil(id);
                            finish();
                        }))
                        .setNegativeButton(R.string.no, (((dialog1, which1) -> {
                            Database db = new Database(HayvanDetay.this);
 
                            for (Tohum t : db.tohumListele()) {
-                               if (t.getIsim().equals(db.ara(id).getTohum())) {
+                               if (t.getIsim().equals(db.getHayvan(id).getTohum())) {
                                    db.tohumArttir(t.getId());
                                    break;
                                }
                            }
 
-                           db.veriSil(id);
+                           db.hayvanSil(id);
                            finish();
                        })))
                        .setIcon(R.drawable.dialog_delete)
@@ -86,7 +86,7 @@ public class HayvanDetay extends AppCompatActivity {
 
     public void guncelle() {
         Database db = new Database(this);
-        h = db.ara(id);
+        h = db.getHayvan(id);
         sahiptv.setText(h.getSahip());
         esgaltv.setText(h.getEsgal());
         tohumtv.setText(h.getTohum());

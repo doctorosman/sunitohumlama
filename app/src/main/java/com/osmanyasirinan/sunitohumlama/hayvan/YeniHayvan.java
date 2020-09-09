@@ -127,7 +127,7 @@ public class YeniHayvan extends AppCompatActivity {
             }
 
             Database vt = new Database(YeniHayvan.this);
-            vt.veriEkle(sahip, esgal, tohum, koy, currentDate);
+            vt.hayvanEkle(sahip, esgal, tohum, koy, currentDate);
 
             if (!tohum.equals(""))
                 vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition() - 1));

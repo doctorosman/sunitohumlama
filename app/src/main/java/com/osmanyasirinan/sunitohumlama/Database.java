@@ -72,7 +72,7 @@ public class Database extends SQLiteOpenHelper {
 
     // HAYVANLAR TABLOSU
 
-    public void veriEkle(String sahip, String esgal, String tohum, String koy, String tarih){
+    public void hayvanEkle(String sahip, String esgal, String tohum, String koy, String tarih){
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues cv = new ContentValues();
@@ -82,13 +82,12 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_KOY, koy);
             cv.put(ROW_TARIH, tarih);
             db.insert(TABLO_HAYVANLAR, null, cv);
-        }catch (Exception e){
+        }catch (Exception ignored){}
 
-        }
         db.close();
     }
 
-    public List<String> veriListele(){
+    public List<String> hayvanSahipListele(){
         List<String> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         try {
@@ -97,14 +96,31 @@ public class Database extends SQLiteOpenHelper {
             while (cursor.moveToNext()){
                 veriler.add(cursor.getString(1));
             }
-        }catch (Exception e){
+            cursor.close();
+        }catch (Exception ignored){}
 
-        }
         db.close();
         return veriler;
     }
 
-    public List<Integer> idListele(){
+    public List<String> hayvanSahipListele(String s){
+        List<String> veriler = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_SAHIP + " LIKE '%" + s + "%' ORDER BY id DESC", null, null);
+            if (cursor.moveToFirst()){
+                do {
+                    veriler.add(cursor.getString(1));
+                }while (cursor.moveToNext());
+            }
+            cursor.close();
+        }catch (Exception ignored){}
+        db.close();
+        return veriler;
+    }
+
+    public List<Integer> hayvanIdListele(){
         List<Integer> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         try {
@@ -113,95 +129,51 @@ public class Database extends SQLiteOpenHelper {
             while (cursor.moveToNext()){
                 veriler.add(cursor.getInt(0));
             }
-        }catch (Exception e){
+            cursor.close();
+        }catch (Exception ignored){
 
         }
         db.close();
         return veriler;
     }
 
-    public List<Integer> idListele(String s){
+    public List<Integer> hayvanIdListele(String s){
         List<Integer> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            String[] sutunlar = {ROW_ID, ROW_SAHIP, ROW_ESGAL, ROW_TOHUM, ROW_KOY, ROW_TARIH};
             Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_SAHIP + " LIKE '%" + s + "%' ORDER BY id DESC", null, null);
             if (cursor.moveToFirst()){
                 do {
                     veriler.add(cursor.getInt(0));
                 }while (cursor.moveToNext());
             }
-        }catch (Exception e){}
+            cursor.close();
+        }catch (Exception ignored){}
+
         db.close();
         return veriler;
     }
 
-    public List<String> veriListele(String s){
-        List<String> veriler = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        try {
-            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_SAHIP + " LIKE '%" + s + "%' ORDER BY id DESC", null, null);
-            if (cursor.moveToFirst()){
-                do {
-                    veriler.add(cursor.getString(1));
-                }while (cursor.moveToNext());
-            }
-        }catch (Exception e){}
-        db.close();
-        return veriler;
-    }
-
-    public List<String> filterbyTarih(String date){
-        List<String> veriler = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        try {
-            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_TARIH + " LIKE '%" + date + "%' ORDER BY id DESC", null, null);
-            if (cursor.moveToFirst()){
-                do {
-                    veriler.add(cursor.getString(1));
-                }while (cursor.moveToNext());
-            }
-        }catch (Exception e){}
-        db.close();
-        return veriler;
-    }
-
-    public List<Integer> filterIdsbyTarih(String date){
-        List<Integer> veriler = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        try {
-            Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR + " WHERE " + ROW_TARIH + " LIKE '%" + date + "%' ORDER BY id DESC", null, null);
-            if (cursor.moveToFirst()){
-                do {
-                    veriler.add(cursor.getInt(0));
-                }while (cursor.moveToNext());
-            }
-        }catch (Exception e){}
-        db.close();
-        return veriler;
-    }
-
-    public Hayvan ara(int p) {
+    public Hayvan getHayvan(int p) {
         Hayvan h = null;
         String q = "SELECT * FROM " + TABLO_HAYVANLAR + " WHERE id=" + p;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(q, null);
-
         cursor.moveToFirst();
+
         if(cursor.getCount() > 0){
             h = new Hayvan(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
         }
+
         cursor.close();
         db.close();
         return h;
     }
 
-    public void veriDuzenle(int id, String sahip, String esgal, String tohum, String koy, String tarih){
+    public void hayvanGuncelle(int id, String sahip, String esgal, String tohum, String koy, String tarih){
         SQLiteDatabase db = this.getWritableDatabase();
+
         try {
             ContentValues cv = new ContentValues();
             cv.put(ROW_SAHIP, sahip);
@@ -211,20 +183,19 @@ public class Database extends SQLiteOpenHelper {
             cv.put(ROW_TARIH, tarih);
             String where = ROW_ID + " = '" + id + "'";
             db.update(TABLO_HAYVANLAR, cv, where, null);
-        }catch (Exception e){
+        }catch (Exception ignored){}
 
-        }
         db.close();
     }
 
-    public void veriSil(int id){
+    public void hayvanSil(int id){
         SQLiteDatabase db = this.getWritableDatabase();
+
         try {
             String where = ROW_ID + " = " + id;
             db.delete(TABLO_HAYVANLAR, where, null);
-        }catch (Exception e){
+        }catch (Exception ignored){}
 
-        }
         db.close();
     }
 
@@ -332,6 +303,7 @@ public class Database extends SQLiteOpenHelper {
     public List<Hayvan> hayvanListele() {
         List<Hayvan> veriler = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
+
         try {
             Cursor cursor = db.rawQuery("SELECT * FROM " + TABLO_HAYVANLAR, null);
             if (cursor.moveToFirst()){
@@ -346,9 +318,8 @@ public class Database extends SQLiteOpenHelper {
                 }while (cursor.moveToNext());
             }
             cursor.close();
-        }catch (Exception e){
+        }catch (Exception ignored){}
 
-        }
         return veriler;
     }
 
@@ -359,7 +330,7 @@ public class Database extends SQLiteOpenHelper {
             String line = reader.readLine();
             while (line != null) {
                 String[] hayvan = line.split("\\|");
-                veriEkle(
+                hayvanEkle(
                         hayvan[0],
                         hayvan[1],
                         hayvan[2],
@@ -376,16 +347,16 @@ public class Database extends SQLiteOpenHelper {
 
     public void exportr(){
         int n = 0;
-        String text = "";
+        StringBuilder text = new StringBuilder();
         for (Hayvan h : hayvanListele()) {
-            text += ((n != 0) ? "\n" : "") + h.getSahip() + "|" + h.getEsgal() + "|" + h.getTohum() + "|" + h.getKoy() + "|" + h.getTarih();
+            text.append((n != 0) ? "\n" : "").append(h.getSahip()).append("|").append(h.getEsgal()).append("|").append(h.getTohum()).append("|").append(h.getKoy()).append("|").append(h.getTarih());
             n++;
         }
 
         try {
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "output.tohumlama");
             FileWriter writer = new FileWriter(file);
-            writer.write(text);
+            writer.write(text.toString());
             writer.close();
             Toast.makeText(context, "Kayıtlarınız downloads (indirilenler) klasörünüze aktarıldı.", Toast.LENGTH_SHORT).show();
         }catch (IOException e) {
