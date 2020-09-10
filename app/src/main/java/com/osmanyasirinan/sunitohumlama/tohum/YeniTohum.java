@@ -37,7 +37,7 @@ public class YeniTohum extends AppCompatActivity {
         azalt = findViewById(R.id.tohumnewazalt);
         kaydet = findViewById(R.id.tohumnewb);
 
-        tohum.addTextChangedListener(new Utils().watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        tohum.addTextChangedListener(Utils.watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
         arttir.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) + 25;

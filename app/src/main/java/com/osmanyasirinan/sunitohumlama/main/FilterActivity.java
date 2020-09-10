@@ -23,7 +23,6 @@ public class FilterActivity extends AppCompatActivity {
     Button button;
     ImageView sahipimg, esgalimg, tohumimg, koyimg;
     EditText sahipet, esgalet, tohumet, koyet;
-    int selectedAy = 0, selectedYil = new Database(this).YIL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,39 +42,31 @@ public class FilterActivity extends AppCompatActivity {
         tohumimg = findViewById(R.id.tohum_imgview3);
         koyimg = findViewById(R.id.koy_imgview3);
 
-        pickay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
-                pickerDialog.setListener(new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        selectedAy = month;
-                        selectedYil = year;
-                    }
-                });
-                pickerDialog.show(getSupportFragmentManager(), "MonthYearPickerDialog");
+        /*
+        pickay.setOnClickListener(v -> {
+            MonthYearPickerDialog pickerDialog = new MonthYearPickerDialog();
+            pickerDialog.setListener((view, year, month, dayOfMonth) -> {
+                selectedAy = month;
+                selectedYil = year;
+            });
+            pickerDialog.show(getSupportFragmentManager(), "MonthYearPickerDialog");
+        }); */
+
+        sahipet.addTextChangedListener(Utils.watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
+        esgalet.addTextChangedListener(Utils.watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        tohumet.addTextChangedListener(Utils.watcher(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        koyet.addTextChangedListener(Utils.watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+
+        /*        button.setOnClickListener(v -> {
+            if (sahipet.getText().toString().equals("") && esgalet.getText().toString().equals("") && tohumet.getText().toString().equals("") && koyet.getText().toString().equals("") && selectedAy == 0){
+
+            }else {
+                Intent i = new Intent(FilterActivity.this, MainActivity.class);
+                i.putExtra("strings", new String[]{sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString()});
+                i.putExtra("parts", new int[]{selectedAy, selectedYil});
+                startActivity(i);
+                finish();
             }
-        });
-
-        sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
-        esgalet.addTextChangedListener(new Utils().watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
-        tohumet.addTextChangedListener(new Utils().watcher(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
-        koyet.addTextChangedListener(new Utils().watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sahipet.getText().toString().equals("") && esgalet.getText().toString().equals("") && tohumet.getText().toString().equals("") && koyet.getText().toString().equals("") && selectedAy == 0){
-
-                }else {
-                    Intent i = new Intent(FilterActivity.this, MainActivity.class);
-                    i.putExtra("strings", new String[]{sahipet.getText().toString(), esgalet.getText().toString(), tohumet.getText().toString(), koyet.getText().toString()});
-                    i.putExtra("parts", new int[]{selectedAy, selectedYil});
-                    startActivity(i);
-                    finish();
-                }
-            }
-        });
+        }); */
     }
 }

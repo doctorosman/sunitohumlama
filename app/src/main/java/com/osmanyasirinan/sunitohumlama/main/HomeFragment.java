@@ -40,13 +40,6 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment(Context context){
         this.context = context;
-        prefs = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
-        editor = prefs.edit();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Nullable
@@ -57,6 +50,9 @@ public class HomeFragment extends Fragment {
         et = v.findViewById(R.id.srch);
         lv = v.findViewById(R.id.list);
         fab = v.findViewById(R.id.fab);
+
+        prefs = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
         et.addTextChangedListener(new TextWatcher() {
             @Override
@@ -72,7 +68,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 editor.putString("text", s.toString());
-                editor.commit();
+                editor.apply();
             }
         });
 
@@ -95,11 +91,6 @@ public class HomeFragment extends Fragment {
         });
 
         return v;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
     @Override
@@ -129,4 +120,5 @@ public class HomeFragment extends Fragment {
         adapter = new ArrayAdapter<>(context, R.layout.card, R.id.tvad, list);
         lv.setAdapter(adapter);
     }
+
 }

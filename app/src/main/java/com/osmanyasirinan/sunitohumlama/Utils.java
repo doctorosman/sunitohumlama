@@ -1,7 +1,10 @@
 package com.osmanyasirinan.sunitohumlama;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,7 +13,7 @@ import android.widget.TextView;
 
 public class Utils {
 
-    public String putZeros(int a){
+    public static String putZeros(int a){
         if (String.valueOf(a).length() == 1){
             return "0" + a;
         }else {
@@ -18,7 +21,7 @@ public class Utils {
         }
     }
 
-    public TextWatcher watcher(final ImageView image, final int oldID, final int newID){
+    public static TextWatcher watcher(final ImageView image, final int oldID, final int newID){
         return new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -40,7 +43,7 @@ public class Utils {
         };
     }
 
-    public AdapterView.OnItemSelectedListener itemSelectedListener(final ImageView img, final int oldID, final int newID){
+    public static AdapterView.OnItemSelectedListener itemSelectedListener(final ImageView img, final int oldID, final int newID){
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -59,7 +62,7 @@ public class Utils {
         };
     }
 
-    public String getFrom(String from, int part){
+    public static String getFrom(String from, int part){
         switch (part) {
             case 0:
                 return from.charAt(0) + "" + from.charAt(1);
@@ -72,7 +75,7 @@ public class Utils {
         }
     }
 
-    public String getAy(int b) {
+    public static String getAy(int b) {
         switch (b){
             case 1:
                 return "Ocak";
@@ -113,6 +116,13 @@ public class Utils {
             default:
                 return null;
         }
+    }
+
+    public static void cleanPrefs(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
     }
 
 }

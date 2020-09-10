@@ -32,8 +32,6 @@ public class Database extends SQLiteOpenHelper {
     private static final String ROW_ISIM = "isim";
     private static final String ROW_MIKTAR = "miktar";
 
-    static Calendar c = Calendar.getInstance();
-    public int YIL = c.get(Calendar.YEAR);
     private Context context;
 
     public Database(Context context){
@@ -193,6 +191,9 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    // TODO
+    /*
+
     public int getAyKayit(int a){
         String ay = new Utils().putZeros(a);
         int sayi = 0;
@@ -231,7 +232,7 @@ public class Database extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return sayi;
-    }
+    } */
 
     // TODO
     /*public List<Hayvan> filtrele(String sahip, String esgal, String tohum, String koy, int ay, int yil) {

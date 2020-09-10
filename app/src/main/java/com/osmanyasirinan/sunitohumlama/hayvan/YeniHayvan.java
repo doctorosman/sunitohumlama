@@ -54,7 +54,8 @@ public class YeniHayvan extends AppCompatActivity {
         cb = findViewById(R.id.cb);
 
         Calendar calendar = Calendar.getInstance();
-        currentDate = new Date(calendar.getTimeInMillis());
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1);
+        currentDate = new Date(calendar.getTimeInMillis() / 1000L);
 
         cb.setOnClickListener(v -> {
             final Calendar takvim = Calendar.getInstance();
@@ -77,9 +78,9 @@ public class YeniHayvan extends AppCompatActivity {
             dpd.show();
         });
 
-        sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
-        koyet.addTextChangedListener(new Utils().watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
-        esgalet.addTextChangedListener(new Utils().watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        sahipet.addTextChangedListener(Utils.watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
+        koyet.addTextChangedListener(Utils.watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+        esgalet.addTextChangedListener(Utils.watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
 
         // TOHUM SPINNER
         spinner = findViewById(R.id.spinner);
@@ -111,7 +112,7 @@ public class YeniHayvan extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new Utils().itemSelectedListener(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        spinner.setOnItemSelectedListener(Utils.itemSelectedListener(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
      }
 
     @Override

@@ -13,31 +13,44 @@
         android:supportsRtl="true"
         android:requestLegacyExternalStorage="true"
         android:theme="@style/NoActionBarTheme">
+
+        <service
+            android:name="com.osmanyasirinan.sunitohumlama.splash.DetectService"
+            android:stopWithTask="false" />
+
         <activity android:name=".tohum.TohumDetay"
             android:screenOrientation="fullSensor"/>
+
         <activity android:name=".tohum.TohumDuzenle"
             android:screenOrientation="fullSensor"/>
+
         <activity android:name=".tohum.YeniTohum"
             android:screenOrientation="fullSensor"/>
+
         <activity
             android:name=".main.FilterActivity"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="fullSensor"/>
+
         <activity
             android:name=".hayvan.HayvanDuzenle"
             android:parentActivityName=".hayvan.HayvanDetay"
             android:screenOrientation="fullSensor" />
+
         <activity
             android:name=".hayvan.HayvanDetay"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="fullSensor" />
+
         <activity
             android:name=".hayvan.YeniHayvan"
             android:screenOrientation="fullSensor"
             android:theme="@style/NoActionBarTheme" />
+
         <activity android:name=".main.MainActivity" />
+
         <activity
-            android:name=".SplashScreen"
+            android:name=".splash.SplashScreen"
             android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -46,8 +59,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
+
 </manifest>

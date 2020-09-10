@@ -78,9 +78,9 @@ public class HayvanDuzenle extends AppCompatActivity {
 
         setItems();
 
-        sahipet.addTextChangedListener(new Utils().watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
-        koyet.addTextChangedListener(new Utils().watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
-        esgalet.addTextChangedListener(new Utils().watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
+        sahipet.addTextChangedListener(Utils.watcher(sahipimg, R.drawable.ic_account_circle_black_24dp, R.drawable.account_colorful));
+        koyet.addTextChangedListener(Utils.watcher(koyimg, R.drawable.ic_location_on_black_24dp, R.drawable.location_colorful));
+        esgalet.addTextChangedListener(Utils.watcher(esgalimg, R.drawable.ic_info_black_24dp, R.drawable.info_colorful));
 
         // SPINNER
         spinner = findViewById(R.id.hayvaneditspinner);
@@ -116,7 +116,7 @@ public class HayvanDuzenle extends AppCompatActivity {
             j++;
         }
 
-        spinner.setOnItemSelectedListener(new Utils().itemSelectedListener(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        spinner.setOnItemSelectedListener(Utils.itemSelectedListener(tohumimg, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
         kaydet.setOnClickListener(v -> {
             Database vt = new Database(HayvanDuzenle.this);

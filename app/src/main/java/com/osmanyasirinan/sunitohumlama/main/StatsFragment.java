@@ -39,7 +39,7 @@ public class StatsFragment extends Fragment {
         ListView today = v.findViewById(R.id.today);
         ListView total = v.findViewById(R.id.total);
 
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         int gun = calendar.get(Calendar.DAY_OF_MONTH);
         int ay = calendar.get(Calendar.MONTH) + 1;
         int yil = calendar.get(Calendar.YEAR);
@@ -57,7 +57,7 @@ public class StatsFragment extends Fragment {
         ArrayAdapter<String> xadapter = new ArrayAdapter<>(context, R.layout.total, R.id.totalkayit, tot);
         total.setAdapter(xadapter);
 
-        Refresh();
+        Refresh(); */
          return v;
     }
 
@@ -76,12 +76,12 @@ public class StatsFragment extends Fragment {
             Database db = new Database(context);
             final ArrayList<Kayit> klist = new ArrayList<>();
             for (int i = 1; i <= c.get(Calendar.MONTH) + 1; i++){
-                int number = db.getAyKayit(i);
+                /*int number = db.getAyKayit(i);
 
                 if (number > 0){
                     Kayit r = new Kayit(new Utils().getAy(i), i, number + "");
                     klist.add(r);
-                }
+                }*/
             }
 
             adapter = new KayitListAdapter(context, R.layout.month, klist);

@@ -3,12 +3,16 @@ package com.osmanyasirinan.sunitohumlama.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.osmanyasirinan.sunitohumlama.R;
+import com.osmanyasirinan.sunitohumlama.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +21,16 @@ public class MainActivity extends AppCompatActivity {
     String[] strings;
     int[] parts;
 
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
         nav = findViewById(R.id.bottomnav);
         fragmentContainer = findViewById(R.id.fragmentcontainer);
@@ -101,4 +111,11 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, f).commit();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Utils.cleanPrefs(getApplicationContext());
+    }
+
 }

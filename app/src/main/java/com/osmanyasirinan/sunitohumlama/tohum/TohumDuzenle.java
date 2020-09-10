@@ -42,7 +42,7 @@ public class TohumDuzenle extends AppCompatActivity {
         tohum.setText(tohumstr);
         miktar.setText(String.valueOf(miktarint));
 
-        tohum.addTextChangedListener(new Utils().watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
+        tohum.addTextChangedListener(Utils.watcher(img, R.drawable.ic_bubble_chart_black_24dp, R.drawable.bubble_colorful));
 
         arttir.setOnClickListener(v -> {
             int newValue = Integer.parseInt(miktar.getText().toString()) + 20;
