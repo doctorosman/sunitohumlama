@@ -18,15 +18,17 @@
             android:id="@+id/tohumnewimgview"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
+            app:srcCompat="@drawable/ic_bubble_chart_black_24dp"
+            android:contentDescription="@string/tohumadi" />
 
         <EditText
             android:id="@+id/tohumnewet"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:hint="Tohum Adı"
-            android:inputType="textCapSentences" />
+            android:layout_marginStart="10dp"
+            android:hint="@string/tohumadi"
+            android:inputType="textCapSentences"
+            android:importantForAutofill="no" />
 
     </LinearLayout>
 
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Miktarı"
+        android:text="@string/miktari"
         android:textColor="#000000"
         android:textSize="18sp" />
 
@@ -50,7 +52,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             app:srcCompat="@drawable/ic_expand_more_black_24dp"
-            />
+            android:contentDescription="@string/cd_azalt" />
 
 
         <EditText
@@ -58,8 +60,10 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="0"
-            android:textAlignment="center" />
+            android:text="@string/sifir"
+            android:textAlignment="center"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
         <ImageButton
             android:id="@+id/tohumnewarttir"
@@ -67,18 +71,18 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             app:srcCompat="@drawable/ic_expand_less_black_24dp"
-            />
+            android:contentDescription="@string/cd_arttir" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/tohumnewb"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
+        android:background="#7B1FA2"
         android:padding="10dp"
-        android:text="EKLE"
+        android:text="@string/button_ekle"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:icon="@drawable/ic_add_black_24dp" />

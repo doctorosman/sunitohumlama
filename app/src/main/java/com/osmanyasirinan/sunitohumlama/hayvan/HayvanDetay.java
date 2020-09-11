@@ -48,11 +48,11 @@ public class HayvanDetay extends AppCompatActivity {
         });
 
         delete.setOnClickListener(v -> new AlertDialog.Builder(HayvanDetay.this)
-               .setTitle("Oyi Suni Tohumlama")
-               .setMessage("Silmek istediğinize emin misiniz?")
+               .setTitle(getString(R.string.app_name))
+               .setMessage(getString(R.string.dialog_delete))
                .setPositiveButton(R.string.yes, (dialog, which) -> new AlertDialog.Builder(HayvanDetay.this)
-                       .setTitle("Oyi Suni Tohumlama")
-                       .setMessage("Tohumu kullandınız mı?")
+                       .setTitle(getString(R.string.app_name))
+                       .setMessage(getString(R.string.dialog_delete2))
                        .setPositiveButton(R.string.yes, ((dialog1, which1) -> {
                            Database db = new Database(HayvanDetay.this);
                            db.hayvanSil(id);

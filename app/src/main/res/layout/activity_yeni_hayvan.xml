@@ -30,15 +30,17 @@
                 android:id="@+id/sahip_imgview2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+                app:srcCompat="@drawable/ic_account_circle_black_24dp"
+                android:contentDescription="@string/sahip" />
 
             <EditText
                 android:id="@+id/sahipet"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:hint="@string/sahip"
-                android:inputType="textCapSentences" />
+                android:inputType="textCapSentences"
+                android:importantForAutofill="no" />
 
         </TableRow>
 
@@ -52,17 +54,19 @@
                 android:id="@+id/esgal_imgview2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_info_black_24dp" />
+                app:srcCompat="@drawable/ic_info_black_24dp"
+                android:contentDescription="@string/esgal" />
 
             <EditText
                 android:id="@+id/esgalet"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:gravity="start|top"
                 android:hint="@string/esgal"
                 android:inputType="textCapSentences"
-                android:lines="5" />
+                android:lines="5"
+                android:importantForAutofill="no" />
 
         </TableRow>
 
@@ -76,7 +80,8 @@
                 android:id="@+id/tohum_imgview2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
+                app:srcCompat="@drawable/ic_bubble_chart_black_24dp"
+                android:contentDescription="@string/tohum" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -96,15 +101,17 @@
                 android:id="@+id/koy_imgview2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_location_on_black_24dp" />
+                app:srcCompat="@drawable/ic_location_on_black_24dp"
+                android:contentDescription="@string/koy" />
 
             <EditText
                 android:id="@+id/koyet"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:hint="@string/koy"
-                android:inputType="textCapSentences" />
+                android:inputType="textCapSentences"
+                android:importantForAutofill="no" />
 
         </TableRow>
 
@@ -112,15 +119,15 @@
 
     <Button
         android:id="@+id/kaydet"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/colorAccent"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:background="#7B1FA2"
         android:paddingLeft="15dp"
+        android:paddingTop="10dp"
         android:paddingRight="15dp"
-        android:text="EKLE"
+        android:paddingBottom="10dp"
+        android:text="@string/button_ekle"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:icon="@drawable/ic_add_black_24dp" />

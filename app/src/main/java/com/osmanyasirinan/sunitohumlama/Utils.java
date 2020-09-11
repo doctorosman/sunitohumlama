@@ -2,6 +2,7 @@ package com.osmanyasirinan.sunitohumlama;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -11,7 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 public class Utils {
+
+    // Rows for filter method in Database class
+    public static String[] rFFM = {"sahip", "esgal", "tohum", "koy", "tarih"};
 
     public static String putZeros(int a){
         if (String.valueOf(a).length() == 1){
@@ -78,40 +86,40 @@ public class Utils {
     public static String getAy(int b) {
         switch (b){
             case 1:
-                return "Ocak";
+                return Resources.getSystem().getString(R.string.m1);
 
             case 2:
-                return "Şubat";
+                return Resources.getSystem().getString(R.string.m2);
 
             case 3:
-                return "Mart";
+                return Resources.getSystem().getString(R.string.m3);
 
             case 4:
-                return "Nisan";
+                return Resources.getSystem().getString(R.string.m4);
 
             case 5:
-                return "Mayıs";
+                return Resources.getSystem().getString(R.string.m5);
 
             case 6:
-                return "Haziran";
+                return Resources.getSystem().getString(R.string.m6);
 
             case 7:
-                return "Temmuz";
+                return Resources.getSystem().getString(R.string.m7);
 
             case 8:
-                return "Ağustos";
+                return Resources.getSystem().getString(R.string.m8);
 
             case 9:
-                return "Eylül";
+                return Resources.getSystem().getString(R.string.m9);
 
             case 10:
-                return "Ekim";
+                return Resources.getSystem().getString(R.string.m10);
 
             case 11:
-                return "Kasım";
+                return Resources.getSystem().getString(R.string.m11);
 
             case 12:
-                return "Aralık";
+                return Resources.getSystem().getString(R.string.m12);
 
             default:
                 return null;
@@ -123,6 +131,16 @@ public class Utils {
         SharedPreferences.Editor editor = prefs.edit();
         editor.clear();
         editor.apply();
+    }
+
+    public static Date zeroizeTime(Date given) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(given.getTime() * 1000L);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return new Date(c.getTimeInMillis() / 1000L);
     }
 
 }

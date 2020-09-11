@@ -10,7 +10,6 @@ import com.osmanyasirinan.sunitohumlama.hayvan.Hayvan;
 import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -234,41 +233,41 @@ public class Database extends SQLiteOpenHelper {
         return sayi;
     } */
 
-    // TODO
-    /*public List<Hayvan> filtrele(String sahip, String esgal, String tohum, String koy, int ay, int yil) {
+    public List<Hayvan> hayvanFiltrele(String[] params) {
         List<Hayvan> list = new ArrayList<>();
+
         String sql = "SELECT id, sahip, esgal, tohum, koy, tarih FROM " + TABLO_HAYVANLAR;
         boolean putAnd = false;
 
-        if (!sahip.equals("")){
-            sql += " WHERE " + ROW_SAHIP + " LIKE '%" + sahip + "%'";
+        if (!params[0].equals("")){
+            sql += " WHERE " + ROW_SAHIP + " LIKE '%" + params[0] + "%'";
             putAnd = true;
         }
 
-        if (!esgal.equals("")){
+        if (!params[1].equals("")){
             if (putAnd)
                 sql += " AND ";
             else
                 sql += " WHERE ";
-            sql += ROW_ESGAL + " LIKE '%" + esgal + "%'";
+            sql += ROW_ESGAL + " LIKE '%" + params[1] + "%'";
             putAnd = true;
         }
 
-        if (!tohum.equals("")){
+        if (!params[2].equals("")){
             if (putAnd)
                 sql += " AND ";
             else
                 sql += " WHERE ";
-            sql += ROW_TOHUM + " LIKE '%" + tohum + "%'";
+            sql += ROW_TOHUM + " LIKE '%" + params[2] + "%'";
             putAnd = true;
         }
 
-        if (!koy.equals("")){
+        if (!params[3].equals("")){
             if (putAnd)
                 sql += " AND ";
             else
                 sql += " WHERE ";
-            sql += ROW_KOY + " LIKE '%" + koy + "%'";
+            sql += ROW_KOY + " LIKE '%" + params[3] + "%'";
         }
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -281,20 +280,32 @@ public class Database extends SQLiteOpenHelper {
         c.close();
         db.close();
 
-        if (ay != 0){
-            List<Hayvan> newList = new ArrayList<>();
+        return list;
+    }
 
-            for (Hayvan h : list) {
-                if (h.getAy() == ay && h.getYil() == yil) {
-                    newList.add(h);
-                }
-            }
+    public List<Hayvan> hayvanFiltrele(String[] params, Date baslangic) {
+        List<Hayvan> list = hayvanFiltrele(params);
+        List<Hayvan> result = new ArrayList<>();
 
-            return newList;
-        }else{
-            return list;
+        for (Hayvan h : list) {
+            if (Utils.zeroizeTime(baslangic).getTime() == Utils.zeroizeTime(h.getTarih()).getTime())
+                result.add(h);
         }
-    } */
+
+        return result;
+    }
+
+    public List<Hayvan> hayvanFiltrele(String[] params, Date baslangic, Date bitis) {
+        List<Hayvan> list = hayvanFiltrele(params);
+        List<Hayvan> result = new ArrayList<>();
+
+        for (Hayvan h : list) {
+            if (Utils.zeroizeTime(baslangic).getTime() <= h.getTarih().getTime() && Utils.zeroizeTime(bitis).getTime() >= h.getTarih().getTime())
+                result.add(h);
+        }
+
+        return result;
+    }
 
     public List<Hayvan> hayvanListele() {
         List<Hayvan> veriler = new ArrayList<>();

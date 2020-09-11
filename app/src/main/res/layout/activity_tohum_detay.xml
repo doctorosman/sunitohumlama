@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="5"
         android:gravity="center"
         android:orientation="vertical">
@@ -20,19 +20,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/bubble_colorful" />
+                app:srcCompat="@drawable/bubble_colorful"
+                android:contentDescription="@string/tohum" />
 
             <TextView
                 android:id="@+id/tohumdetaytohum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Tohum Adı"
+                android:layout_marginStart="10dp"
+                android:text="@string/tohumadi"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
@@ -43,19 +45,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_data_usage_black_24dp" />
+                app:srcCompat="@drawable/ic_data_usage_black_24dp"
+                android:contentDescription="@string/tohummiktari" />
 
             <TextView
                 android:id="@+id/tohumdetaymiktar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Tohum Miktarı"
+                android:layout_marginStart="10dp"
+                android:text="@string/tohummiktari"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
 
@@ -76,14 +80,17 @@
             android:layout_marginEnd="20dp"
             android:layout_height="50dp"
             android:background="#7B1FA2"
-            app:srcCompat="@drawable/ic_edit_black_24dp" />
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            tools:ignore="PrivateResource"
+            android:contentDescription="@string/cd_edit" />
 
         <ImageButton
             android:id="@+id/tohumdetaydelete"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="#D32F2F"
-            app:srcCompat="@drawable/ic_delete_black_24dp" />
+            app:srcCompat="@drawable/ic_delete_black_24dp"
+            android:contentDescription="@string/cd_delete" />
 
     </LinearLayout>
 

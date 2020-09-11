@@ -3,14 +3,17 @@ package com.osmanyasirinan.sunitohumlama.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +25,7 @@ import com.osmanyasirinan.sunitohumlama.hayvan.Hayvan;
 import com.osmanyasirinan.sunitohumlama.hayvan.HayvanDetay;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FilteredFragment extends Fragment {
@@ -30,18 +34,31 @@ public class FilteredFragment extends Fragment {
     private TextView tv;
     private ListView lv;
     private Context context;
-    private String[] strings;
-    private int[] parts;
-    private ImageButton sort;
+    private Button sort;
+
+    private String[] params;
+    private long baslangic = -1, bitis = -1;
 
     public FilteredFragment(Context context) {
         this.context = context;
     }
 
-    public FilteredFragment(Context context, String[] strings, int[] parts) {
+    public FilteredFragment(Context context, String[] params) {
         this.context = context;
-        this.strings = strings;
-        this.parts = parts;
+        this.params = params;
+    }
+
+    public FilteredFragment(Context context, String[] params, long baslangic) {
+        this.context = context;
+        this.params = params;
+        this.baslangic = baslangic;
+    }
+
+    public FilteredFragment(Context context, String[] params, long baslangic, long bitis) {
+        this.context = context;
+        this.params = params;
+        this.baslangic = baslangic;
+        this.bitis = bitis;
     }
 
     @Nullable
@@ -64,28 +81,47 @@ public class FilteredFragment extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume(); /*
-        if (strings != null || parts != null) {
+        super.onResume();
+
+        if (params != null) {
             Database db = new Database(context);
-            List<String> sahips = new ArrayList<>();
-            final List<Hayvan> source = db.filtrele(strings[0], strings[1], strings[2], strings[3], parts[0], parts[1]);
+            List<String> sahipler = new ArrayList<>();
+            List<Hayvan> result;
 
-            for (Hayvan h : source) {
-                sahips.add(h.getSahip());
+            if (baslangic != -1) {
+               if (bitis != -1) {
+                   result = db.hayvanFiltrele(params, new Date(baslangic), new Date(bitis));
+
+                   for (Hayvan h : result) {
+                       sahipler.add(h.getSahip());
+                   }
+               }else {
+                   result = db.hayvanFiltrele(params, new Date(baslangic));
+
+                   for (Hayvan h : result) {
+                       sahipler.add(h.getSahip());
+                   }
+               }
+            }else {
+                result = db.hayvanFiltrele(params);
+
+                for (Hayvan h : result) {
+                    sahipler.add(h.getSahip());
+                }
             }
-            tv.setText(sahips.size() + " kayıt bulundu.");
 
-            ArrayAdapter adapter = new ArrayAdapter<>(context, R.layout.card, R.id.tvad, sahips);
+            String str = String.valueOf(sahipler.size());
+            tv.setText(str);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.card, R.id.tvad, sahipler);
             lv.setAdapter(adapter);
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i = new Intent(context, HayvanDetay.class);
-                    i.putExtra("id", source.get(position).getId());
-                    startActivity(i);
-                }
+            lv.setOnItemClickListener((parent, view, position, id) -> {
+                Intent i = new Intent(context, HayvanDetay.class);
+                i.putExtra("id", result.get(position).getId());
+                startActivity(i);
             });
-        } */
+        }
     }
+
 }

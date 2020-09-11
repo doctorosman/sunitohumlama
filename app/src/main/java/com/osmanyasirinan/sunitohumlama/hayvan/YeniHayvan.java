@@ -3,14 +3,9 @@ package com.osmanyasirinan.sunitohumlama.hayvan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -19,7 +14,6 @@ import android.widget.Toast;
 import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
 import com.osmanyasirinan.sunitohumlama.Utils;
-import com.osmanyasirinan.sunitohumlama.main.MainActivity;
 import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 import java.util.ArrayList;
@@ -55,7 +49,7 @@ public class YeniHayvan extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1);
-        currentDate = new Date(calendar.getTimeInMillis() / 1000L);
+        currentDate = Utils.zeroizeTime(new Date(calendar.getTimeInMillis() / 1000L));
 
         cb.setOnClickListener(v -> {
             final Calendar takvim = Calendar.getInstance();
@@ -72,7 +66,7 @@ public class YeniHayvan extends AppCompatActivity {
                 c.set(Calendar.MONTH, month);
                 c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                currentDate = new Date(c.getTimeInMillis() / 1000L);
+                currentDate = Utils.zeroizeTime(new Date(c.getTimeInMillis() / 1000L));
             }, yil, ay, gun);
 
             dpd.show();
@@ -100,9 +94,9 @@ public class YeniHayvan extends AppCompatActivity {
         }
 
         if (!key)
-            newlist.add("Stokta tohum yok");
+            newlist.add(getString(R.string.spinitem_stokyok));
         else
-            newlist.add("Tohum seçin");
+            newlist.add(getString(R.string.spinitem_tohumsecin));
 
         newlist.addAll(strlist);
 
@@ -125,14 +119,14 @@ public class YeniHayvan extends AppCompatActivity {
             String esgal = esgalet.getText().toString();
             String tohum;
 
-            if (spinner.getSelectedItem().toString().equals("Stokta tohum yok") || spinner.getSelectedItem().toString().equals("Tohum seçin")) {
+            if (spinner.getSelectedItem().toString().equals(getString(R.string.spinitem_stokyok)) || spinner.getSelectedItem().toString().equals(getString(R.string.spinitem_tohumsecin))) {
                 tohum = "";
             }else {
                 tohum = spinner.getSelectedItem().toString();
             }
 
             Database vt = new Database(YeniHayvan.this);
-            vt.hayvanEkle(sahip, esgal, tohum, koy, currentDate);
+            vt.hayvanEkle(sahip, esgal, tohum, koy, Utils.zeroizeTime(currentDate));
             if (!tohum.equals(""))
                 vt.tohumAzalt(intlist.get(spinner.getSelectedItemPosition() - 1));
             bitir();
@@ -140,7 +134,7 @@ public class YeniHayvan extends AppCompatActivity {
     }
 
     private void bitir(){
-        Toast.makeText(getApplicationContext(), "Hayvan eklendi.",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.toast_hayvan),Toast.LENGTH_SHORT).show();
         finish();
     }
 

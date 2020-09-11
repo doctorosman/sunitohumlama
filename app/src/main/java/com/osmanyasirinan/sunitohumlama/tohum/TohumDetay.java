@@ -39,8 +39,8 @@ public class TohumDetay extends AppCompatActivity {
         });
 
         delete.setOnClickListener(v -> new AlertDialog.Builder(TohumDetay.this)
-                .setTitle("Oyi Suni Tohumlama")
-                .setMessage("Silmek istediğinize emin misiniz?")
+                .setTitle(getString(R.string.app_name))
+                .setMessage(getString(R.string.dialog_delete))
                 .setPositiveButton(R.string.yes, (dialog, which) -> {
                     db.tohumSil(id);
                     finish();

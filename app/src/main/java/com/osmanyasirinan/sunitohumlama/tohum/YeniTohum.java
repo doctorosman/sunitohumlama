@@ -65,10 +65,10 @@ public class YeniTohum extends AppCompatActivity {
             if (!tohum.getText().toString().equals("")) {
                 if (!esit) {
                     db.tohumEkle(tohum.getText().toString(), Integer.parseInt(miktar.getText().toString()));
-                    Toast.makeText(getApplicationContext(), "Tohum eklendi.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toast_hayvan), Toast.LENGTH_SHORT).show();
                     finish();
                 } else
-                    Toast.makeText(getApplicationContext(), "Aynı adda tohum bulunuyor.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toast_sametohum), Toast.LENGTH_SHORT).show();
             }
         });
     }

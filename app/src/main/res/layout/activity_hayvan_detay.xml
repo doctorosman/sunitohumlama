@@ -22,14 +22,15 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/account_colorful" />
+                app:srcCompat="@drawable/account_colorful"
+                android:contentDescription="@string/sahip" />
 
             <TextView
                 android:id="@+id/sahiptv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Hayvan Sahibi"
+                android:layout_marginStart="10dp"
+                android:text="@string/sahip"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </TableRow>
@@ -43,14 +44,15 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/info_colorful" />
+                app:srcCompat="@drawable/info_colorful"
+                android:contentDescription="@string/esgal" />
 
             <TextView
                 android:id="@+id/esgaltv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Eşgal"
+                android:layout_marginStart="10dp"
+                android:text="@string/esgal"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </TableRow>
@@ -64,14 +66,15 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/bubble_colorful" />
+                app:srcCompat="@drawable/bubble_colorful"
+                android:contentDescription="@string/tohum" />
 
             <TextView
                 android:id="@+id/tohumtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Tohum"
+                android:layout_marginStart="10dp"
+                android:text="@string/tohum"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </TableRow>
@@ -85,14 +88,15 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/location_colorful" />
+                app:srcCompat="@drawable/location_colorful"
+                android:contentDescription="@string/koy" />
 
             <TextView
                 android:id="@+id/koytv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Köy"
+                android:layout_marginStart="10dp"
+                android:text="@string/koy"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </TableRow>
@@ -106,14 +110,15 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/date_colorful" />
+                app:srcCompat="@drawable/date_colorful"
+                android:contentDescription="@string/tarih" />
 
             <TextView
                 android:id="@+id/tarihtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Tarih"
+                android:layout_marginStart="10dp"
+                android:text="@string/tarih"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </TableRow>
@@ -144,14 +149,17 @@
             android:layout_marginEnd="20dp"
             android:layout_height="50dp"
             android:background="#7B1FA2"
-            app:srcCompat="@drawable/ic_edit_black_24dp" />
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            tools:ignore="PrivateResource"
+            android:contentDescription="@string/cd_edit" />
 
         <ImageButton
             android:id="@+id/deletebutton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="#D32F2F"
-            app:srcCompat="@drawable/ic_delete_black_24dp" />
+            app:srcCompat="@drawable/ic_delete_black_24dp"
+            android:contentDescription="@string/cd_delete" />
 
     </LinearLayout>
 

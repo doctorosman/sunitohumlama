@@ -7,10 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
 import com.osmanyasirinan.sunitohumlama.Utils;
 
@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
     FrameLayout fragmentContainer;
-    String[] strings;
-    int[] parts;
+    String[] params;
+    long baslangic, bitis;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -29,8 +29,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Database db = new Database(this);
+
         prefs = getSharedPreferences("pref", Context.MODE_PRIVATE);
         editor = prefs.edit();
+
+        params = getIntent().getStringArrayExtra("params");
+        baslangic = getIntent().getLongExtra("baslangic", -1);
+        bitis = getIntent().getLongExtra("bitis", -1);
 
         nav = findViewById(R.id.bottomnav);
         fragmentContainer = findViewById(R.id.fragmentcontainer);
@@ -49,8 +55,23 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.nav_filter:
-                    selectedFragment = new FilteredFragment(MainActivity.this, strings, parts);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, selectedFragment).commit();
+                    Fragment f;
+
+                    if (params != null) {
+                        if (baslangic != -1){
+                            if (bitis != -1){
+                                f = new FilteredFragment(MainActivity.this, params, baslangic, bitis);
+                            }else {
+                                f = new FilteredFragment(MainActivity.this, params, baslangic);
+                            }
+                        }else {
+                            f = new FilteredFragment(MainActivity.this, params);
+                        }
+                    }else {
+                        f = new FilteredFragment(MainActivity.this);
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, f).commit();
                     break;
 
                 case R.id.nav_stats:
@@ -97,17 +118,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomeFragment(this)).commit();
-
-        strings = getIntent().getStringArrayExtra("strings");
-        parts = getIntent().getIntArrayExtra("parts");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (strings != null && parts != null) {
-            Fragment f = new FilteredFragment(MainActivity.this, strings, parts);
+        if (params != null) {
+            Fragment f;
+            if (baslangic != -1){
+                if (bitis != -1){
+                    f = new FilteredFragment(MainActivity.this, params, baslangic, bitis);
+                }else {
+                    f = new FilteredFragment(MainActivity.this, params, baslangic);
+                }
+            }else {
+                f = new FilteredFragment(MainActivity.this, params);
+            }
+
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, f).commit();
         }
     }

@@ -18,17 +18,17 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_bubble_chart_black_24dp" />
+        app:srcCompat="@drawable/ic_bubble_chart_black_24dp"
+        android:contentDescription="@string/tohumadi" />
 
-    <TextView
-        android:id="@+id/tvtohumad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Tohum Adı"
-        android:layout_weight="1"
-        android:textColor="#000000"
-        android:textSize="23sp" />
+        <TextView
+            android:id="@+id/tvtohumad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/tvtohummiktar"

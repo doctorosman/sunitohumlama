@@ -1,25 +1,73 @@
 <resources>
     <string name="app_name">Oyi Suni Tohumlama</string>
-    <string name="hayvan_ekle">HAYVAN EKLE</string>
-    <string name="byeni">YENİ HAYVAN</string>
+
+    <!-- BUTTONS -->
+    <string name="button_filter">FİLTRELE</string>
+    <string name="button_tarih">\u00A0TARİH\u00A0</string>
+    <string name="button_baslangic">\u00A0BAŞLANGIÇ\u00A0</string>
+    <string name="button_bitis">\u00A0BİTİŞ\u00A0</string>
+    <string name="button_kaydet">KAYDET</string>
+    <string name="button_ekle">EKLE</string>
+    <string name="button_filtrele">\u00A0FİLTRELE\u00A0</string>
+
+    <!-- SWITCHS -->
+    <string name="switch_tarih">Tarih</string>
+    <string name="switch_ikitarih">İki tarih arası</string>
+
+    <!-- TEXTVIEWS -->
+    <string name="tahmini">Tahmini doğurma tarihi:</string>
+    <string name="filterinfo">Filtreleme işleminde yalnızca seçtiğiniz alanlara göre arama yapılır.</string>
+    <string name="miktari">Miktarı</string>
+    <string name="today">Bugün</string>
+    <string name="total">Toplam</string>
+
+    <!-- SPINNERS -->
+    <string name="spinitem_herhangi">Herhangi bir tohum</string>
+    <string name="spinitem_stokyok">Stokta tohum yok</string>
+    <string name="spinitem_tohumsecin">Tohum seçin</string>
+
+    <!-- EDITTEXT HINTS AND CONTENT DESCRIPTIONS -->
     <string name="sahip">Hayvan Sahibi</string>
     <string name="koy">Köy</string>
     <string name="tohum">Atılan Tohum</string>
     <string name="esgal">Hayvan Eşgali</string>
-    <string name="topkayit">Toplam Kayıt:</string>
-    <string name="gunkayit">Bugünkü Kayıt:</string>
-    <string name="copyright">v1.1\ncreated by oyi</string>
-    <string name="kayitbulunamadi">0 kayıt bulundu.</string>
-    <string name="imports">Önceki kayıtlarınızı içe aktarın.</string>
-    <string name="exports">Var olan kayıtlarınızı dışa aktarın.</string>
-    <string name="github">İçe ve dışa aktarmayı nasıl yapacağınızı repomuzdan öğrenebilirsiniz.</string>
-    <string name="tahmini">Tahmini doğurma tarihi:</string>
+    <string name="tarih">Tarih</string>
+    <string name="cd_edit">Düzenle</string>
+    <string name="cd_delete">Sil</string>
+    <string name="tohumadi">Tohum Adı</string>
+    <string name="tohummiktari">Tohum Miktarı</string>
+    <string name="cd_azalt">Azalt</string>
+    <string name="sifir">0</string>
+    <string name="cd_arttir">Arttır</string>
+    <string name="cd_search">Ara</string>
+    <string name="cd_statmonth">Aylık Veri</string>
+    <string name="cd_stattoday">Günün Verisi</string>
+    <string name="cd_statyear">Yıllık Veri</string>
+
+    <!-- TOAST TEXTS -->
+    <string name="toast_hayvan">Hayvan eklendi.</string>
+    <string name="toast_tohum">Tohum eklendi.</string>
+    <string name="toast_sametohum">Aynı adda tohum bulunuyor.</string>
+
+    <!-- DIALOG TEXTS -->
+    <string name="dialog_delete">Silmek istediğinize emin misiniz?</string>
+    <string name="dialog_delete2">Tohumu kullandınız mı?</string>
+
+    <!-- POSITIVE AND NEGATIVE BUTTONS -->
     <string name="yes">EVET</string>
     <string name="no">HAYIR</string>
 
-    <string name="step1">Tüm kayıtlarınız burada listelenecek. Buradan arama yapabilirsiniz.</string>
-    <string name="step2">Günlük, aylık ve toplam kayıt sayısına buradan ulaşabilirsiniz.</string>
-    <string name="step3">Yeni kayıt oluşturabilirsiniz.</string>
-    <string name="step4">Bir kere tıkladığınızda en son filtrelenen kayıtlara ulaşabilir, iki kere tıkladığında filtreleme yapabilirsiniz.</string>
-    <string name="step5">İçe ve dışa aktarma işlemlerini yapabilirsiniz. Bunun için depolama izni gerekmektedir.</string>
+    <!-- MONTHS -->
+    <string name="m1">Ocak</string>
+    <string name="m2">Şubat</string>
+    <string name="m3">Mart</string>
+    <string name="m4">Nisan</string>
+    <string name="m5">Mayıs</string>
+    <string name="m6">Haziran</string>
+    <string name="m7">Temmuz</string>
+    <string name="m8">Ağustos</string>
+    <string name="m9">Eylül</string>
+    <string name="m10">Ekim</string>
+    <string name="m11">Kasım</string>
+    <string name="m12">Aralık</string>
 </resources>

@@ -97,9 +97,9 @@ public class HayvanDuzenle extends AppCompatActivity {
         }
 
         if (!key)
-            newlist.add("Stokta tohum yok");
+            newlist.add(getString(R.string.spinitem_stokyok));
         else
-            newlist.add("Tohum seçin");
+            newlist.add(getString(R.string.spinitem_tohumsecin));
 
         newlist.addAll(strlist);
 
@@ -123,13 +123,13 @@ public class HayvanDuzenle extends AppCompatActivity {
 
             String tohum;
 
-            if (spinner.getSelectedItem().toString().equals("Stokta tohum yok") || spinner.getSelectedItem().toString().equals("Tohum seçin")) {
+            if (spinner.getSelectedItem().toString().equals(getString(R.string.spinitem_stokyok)) || spinner.getSelectedItem().toString().equals(getString(R.string.spinitem_tohumsecin))) {
                 tohum = "";
             }else {
                 tohum = spinner.getSelectedItem().toString();
             }
 
-            vt.hayvanGuncelle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohum, koyet.getText().toString(), currentDate);
+            vt.hayvanGuncelle(id, sahipet.getText().toString(), esgalet.getText().toString(), tohum, koyet.getText().toString(), Utils.zeroizeTime(currentDate));
 
             if (!tohum.equals(h.getTohum())){
                 for (Tohum t : db.tohumListele()) {
