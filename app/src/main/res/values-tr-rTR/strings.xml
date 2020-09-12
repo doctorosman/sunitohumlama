@@ -1,7 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Oyi Suni Tohumlama</string>
-
-    <!-- BUTTONS -->
     <string name="button_filter">FİLTRELE</string>
     <string name="button_tarih">\u00A0TARİH\u00A0</string>
     <string name="button_baslangic">\u00A0BAŞLANGIÇ\u00A0</string>
@@ -9,24 +8,16 @@
     <string name="button_kaydet">KAYDET</string>
     <string name="button_ekle">EKLE</string>
     <string name="button_filtrele">\u00A0FİLTRELE\u00A0</string>
-
-    <!-- SWITCHS -->
     <string name="switch_tarih">Tarih</string>
     <string name="switch_ikitarih">İki tarih arası</string>
-
-    <!-- TEXTVIEWS -->
     <string name="tahmini">Tahmini doğurma tarihi:</string>
     <string name="filterinfo">Filtreleme işleminde yalnızca seçtiğiniz alanlara göre arama yapılır.</string>
     <string name="miktari">Miktarı</string>
     <string name="today">Bugün</string>
     <string name="total">Toplam</string>
-
-    <!-- SPINNERS -->
     <string name="spinitem_herhangi">Herhangi bir tohum</string>
     <string name="spinitem_stokyok">Stokta tohum yok</string>
     <string name="spinitem_tohumsecin">Tohum seçin</string>
-
-    <!-- EDITTEXT HINTS AND CONTENT DESCRIPTIONS -->
     <string name="sahip">Hayvan Sahibi</string>
     <string name="koy">Köy</string>
     <string name="tohum">Atılan Tohum</string>
@@ -43,22 +34,13 @@
     <string name="cd_statmonth">Aylık Veri</string>
     <string name="cd_stattoday">Günün Verisi</string>
     <string name="cd_statyear">Yıllık Veri</string>
-
-    <!-- TOAST TEXTS -->
     <string name="toast_hayvan">Hayvan eklendi.</string>
     <string name="toast_tohum">Tohum eklendi.</string>
     <string name="toast_sametohum">Aynı adda tohum bulunuyor.</string>
-    <string name="toast_basbuyukbitis">Başlangıç tarihi bitiş tarihinden geç olamaz.</string>
-
-    <!-- DIALOG TEXTS -->
     <string name="dialog_delete">Silmek istediğinize emin misiniz?</string>
     <string name="dialog_delete2">Tohumu kullandınız mı?</string>
-
-    <!-- POSITIVE AND NEGATIVE BUTTONS -->
     <string name="yes">EVET</string>
     <string name="no">HAYIR</string>
-
-    <!-- MONTHS -->
     <string name="m1">Ocak</string>
     <string name="m2">Şubat</string>
     <string name="m3">Mart</string>
@@ -71,4 +53,5 @@
     <string name="m10">Ekim</string>
     <string name="m11">Kasım</string>
     <string name="m12">Aralık</string>
+    <string name="toast_basbuyukbitis">Başlangıç tarihi bitiş tarihinden geç olamaz.</string>
 </resources>

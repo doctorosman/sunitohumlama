@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.osmanyasirinan.sunitohumlama.Database;
 import com.osmanyasirinan.sunitohumlama.R;
@@ -139,7 +140,10 @@ public class FilterActivity extends AppCompatActivity {
             String tohum = (tohumsp.getSelectedItem().toString().equals(getString(R.string.spinitem_herhangi)) ? "" : tohumsp.getSelectedItem().toString());
             String esgal = esgalet.getText().toString();
             String koy = koyet.getText().toString();
-            if (!sahip.equals("") || !tohum.equals("") || !esgal.equals("") || !koy.equals("") || baslangic != -1) {
+
+            if (baslangic > bitis) {
+                Toast.makeText(this, getString(R.string.toast_basbuyukbitis), Toast.LENGTH_SHORT).show();
+            }else if (!sahip.equals("") || !tohum.equals("") || !esgal.equals("") || !koy.equals("") || baslangic != -1) {
                 Intent i = new Intent(FilterActivity.this, MainActivity.class);
                 i.putExtra("params", new String[]{sahip, esgal, tohum, koy});
 
