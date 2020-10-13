@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.osmanyasirinan.sunitohumlama.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
 public class StatsFragment extends Fragment {
 

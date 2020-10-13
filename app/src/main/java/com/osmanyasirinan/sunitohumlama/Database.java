@@ -11,7 +11,9 @@ import com.osmanyasirinan.sunitohumlama.tohum.Tohum;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -328,6 +330,16 @@ public class Database extends SQLiteOpenHelper {
         }catch (Exception ignored){}
 
         return veriler;
+    }
+
+    public Set<Integer> getYears() {
+        Set<Integer> years = new HashSet<>();
+
+        for (Hayvan h : hayvanListele()) {
+            years.add(Integer.parseInt(String.valueOf(h.getTarihStr().charAt(6)) + h.getTarihStr().charAt(7) + h.getTarihStr().charAt(8) + h.getTarihStr().charAt(9)));
+        }
+
+        return years;
     }
 
     // TODO

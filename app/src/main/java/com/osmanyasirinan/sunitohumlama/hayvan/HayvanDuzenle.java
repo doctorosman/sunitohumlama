@@ -62,9 +62,7 @@ public class HayvanDuzenle extends AppCompatActivity {
             int yil = takvim.get(Calendar.YEAR);
 
             DatePickerDialog dpd = new DatePickerDialog(HayvanDuzenle.this, (view, year, month, dayOfMonth) -> {
-                month += 1;
-
-                Calendar c = Calendar.getInstance();
+               Calendar c = Calendar.getInstance();
 
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, month);

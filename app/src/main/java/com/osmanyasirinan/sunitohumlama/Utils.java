@@ -70,17 +70,14 @@ public class Utils {
         };
     }
 
-    public static String getFrom(String from, int part){
-        switch (part) {
-            case 0:
-                return from.charAt(0) + "" + from.charAt(1);
+    public String getDateFrom(Calendar c) {
+        return putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + putZeros(c.get(Calendar.MONTH) + 1) + "." + c.get(Calendar.YEAR);
+    }
 
-            case 1:
-                return from.charAt(3) + "" + from.charAt(4);
-
-            default:
-                return from.charAt(6) + "" + from.charAt(7) + from.charAt(8) + from.charAt(9);
-        }
+    public static int getYearFrom(long unix){
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(new Date(unix).getTime() * 1000L);
+        return c.get(Calendar.YEAR);
     }
 
     public static String getAy(int b) {

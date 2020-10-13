@@ -61,14 +61,14 @@ public class Hayvan {
     public String getTarihStr() {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(this.tarih.getTime() * 1000L);
-        return Utils.putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + Utils.putZeros(c.get(Calendar.MONTH)) + "." + c.get(Calendar.YEAR);
+        return Utils.putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + Utils.putZeros(c.get(Calendar.MONTH) + 1) + "." + c.get(Calendar.YEAR);
     }
 
     public String getTahminiDogum() {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(this.tarih.getTime() * 1000L);
         c.add(Calendar.DAY_OF_YEAR, 280);
-        return Utils.putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + Utils.putZeros(c.get(Calendar.MONTH)) + "." + c.get(Calendar.YEAR);
+        return Utils.putZeros(c.get(Calendar.DAY_OF_MONTH)) + "." + Utils.putZeros(c.get(Calendar.MONTH) + 1) + "." + c.get(Calendar.YEAR);
     }
 
 }

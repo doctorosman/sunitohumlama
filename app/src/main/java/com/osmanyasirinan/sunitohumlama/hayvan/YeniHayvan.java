@@ -48,7 +48,6 @@ public class YeniHayvan extends AppCompatActivity {
         cb = findViewById(R.id.cb);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + 1);
         currentDate = Utils.zeroizeTime(new Date(calendar.getTimeInMillis() / 1000L));
 
         cb.setOnClickListener(v -> {
@@ -58,8 +57,6 @@ public class YeniHayvan extends AppCompatActivity {
             int yil = takvim.get(Calendar.YEAR);
 
             DatePickerDialog dpd = new DatePickerDialog(YeniHayvan.this, (view, year, month, dayOfMonth) -> {
-                month += 1;
-
                 Calendar c = Calendar.getInstance();
 
                 c.set(Calendar.YEAR, year);
